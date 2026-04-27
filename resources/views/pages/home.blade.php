@@ -399,6 +399,5 @@ document.querySelector(".slider").addEventListener("mouseleave", () => {
 updateSlider();
 </script>
 
-
 @include('layouts.footer') 
 @endsection
