@@ -30,7 +30,7 @@ $fbLeyte = "https://m.me/1045229935570610";
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="icon" type="image/png" href="{{ asset('public/images/fil-products-logo.png') }}">
+<link rel="icon" type="image/png" href="{{ asset('images/fil-products-logo.png') }}">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
