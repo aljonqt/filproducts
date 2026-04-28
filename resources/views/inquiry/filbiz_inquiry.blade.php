@@ -399,6 +399,8 @@ margin-top:8px;
 Click the map to mark your house location.
 </div>
 
+
+
 <button type="button"
 data-get-location
 style="
@@ -415,10 +417,12 @@ Auto Detect My Location
 </button>
 
 </div>
-
 </div>
 
-
+                    <!-- NOTICE -->
+        <div style="margin-top: 20px; padding: 10px; background-color: #fff3cd; border-left: 5px solid #ffc107; font-size: 14px;">
+            <strong>Notice:</strong> By submitting this application, the applicant acknowledges that they have carefully read, understood, and agreed to the terms and conditions outlined in the contract.
+        </div>
 </form>
 
 </div>
