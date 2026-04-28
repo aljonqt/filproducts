@@ -790,6 +790,247 @@ if (isset($sheetUrls[$branch])) {
             $pdf->Cell(0,6,'Longitude: '.$request->longitude,0,1,'C');
         }
 
+        /* ================= PAGE 4 : CONTRACT PAGE 1 ================= */
+            $pdf->AddPage();
+
+            $pdf->SetFont('helvetica','B',12);
+            $pdf->Cell(0,6,'CONTRACT AGREEMENT',0,1,'C');
+
+            $pdf->Ln(3);
+
+            $pdf->SetFont('helvetica','',8);
+
+            /* DATE */
+            $day   = date('j');
+            $month = date('F');
+            $year  = date('Y');
+
+            /* FULL ADDRESS */
+            $fullAddress = trim(
+                ($request->street ?? '') . ', ' .
+                ($request->barangay ?? '') . ', ' .
+                ($request->city ?? '')
+            );
+
+            /* BRANCH FORMAT */
+            $branchMap = [
+                'calbayog' => 'Calbayog City',
+                'catbalogan' => 'Catbalogan City',
+                'sanjorge' => 'San Jorge',
+                'allen' => 'Allen',
+                'catarman' => 'Catarman',
+                'mondragon' => 'Mondragon',
+                'tacloban' => 'Tacloban City',
+                'palo' => 'Palo'
+            ];
+
+            $branchText = $branchMap[$request->branch] ?? $request->branch;
+
+            /* CONTENT */
+            $pdf->MultiCell(0,5,"
+            KNOW ALL MEN BY THESE PRESENTS:
+
+            This CONTRACT SUBSCRIPTION is made and entered into this day of {$day} of {$month}, {$year}
+            by and between FIL PRODUCTS SERVICE TELEVISION OF CALBAYOG, INC., a corporation duly organized and existing under and by virtue of Philippine laws with principal office at Bernate Compound, Brgy. Capoocan, Calbayog City, Philippines, hereinafter referred to as FPSTI:
+
+            AND
+
+            I {$fullName}, of legal age, and resident of {$businessAddr}, hereinafter referred to as the SUBSCRIBER.
+
+            WITNESSETH:
+
+            1. FPSTI is an entity authorized by law to build and maintain satellite receiver and cable lines in {$branchText}, Samar, and provide the SUBSCRIBER with cable TV and internet connection. FPSTIshall not be held legally liable for any change, injury, or illegal acts that the subscribers might have caused in the use of the said services.
+
+            2. does not give warranty or guarantee that the cable TV and internet connection it will provide to the subscriber will be free from interruption. 
+
+            3. FPSTI exercises no control over the content of the information that would pass through FPSTI’s cable TV and internet connection facilities, thereby freeing it from any liability whatsoever in whatever form.
+
+            4. The SUBSCRIBER agrees to pay FPSTIthe one-time installation charges, one-month deposit and other applicable basic charges and fees as agreed upon by the SUBSCRIBERin the application form that is signed. All charges and fees shall be non-refundable.The one-month deposit being non-refundable may be consumed to cover the last month of this contract, or may be made part of the Pre-Termination Fee as provided in paragraph 8 hereof.
+
+            5. The monthly subscription fee for the cable TV and internet connection, whether individually separate or as a package, shall become due and payable without necessity of demand or billing upon the end of each billing cycle.
+
+            6. FPSTI reserves the right to increase the subscription fees and other charges upon prior notice to the subscriber. The FPSTIshall notify the subscriber 15 days prior to its implementation by posting the same in all FPSTIcollection offices. 
+
+            7. All payment of subscription fees and charges shall be made at any FPSTI collection office or by collecting agencies authorized and accredited by FPSTI.
+
+            8. The Internet Modem that FPSTI assigns to SUBSCRIBER, once connected, is not transferrable. The right to use the Internet Modem shall not be leased, transferred or assigned to another person without a written consent and notification from FPSTI. The right to use the service is not transferrable. Accounts are for SUBSCRIBER’s use only. The cable TV and internet connection provided by FPSTIfor the SUBSCRIBER are subject to a lock-in period of three (3) years. A pre-termination fee of the equivalent in PESOS (Monthly Subscription Fee x 3 months)shall be payable by the SUBSCRIBER to FPSTI; otherwise, the billing for the monthly subscription will continue to take effect.
+
+            9. FPSTI shall be responsible in the maintenance and repair of its cable and fiber optic lines. The SUBSCRIBER agrees that only duly authorized employees/technicians of FPSTI shall be allowed to enter the former’s premises for ocular inspection/installation/disconnection/pull-out of equipments and/or repair purposes during the reasonable hours of the day. 
+
+            10. The SUBSCRIBER agrees to grant FPSTIeasement to use an existing passage forcable TV and internet connection in the interior or neighboring premises or areas. FPSTI shall be entitled free of charge to an easement over the SUBSCRIBER’s premises for the passage of repairmen, crossing or laying of cable wire, whether aerial or underground and other connection facilities.
+
+            11. Tampering with the INTERNET MODEM is strictly prohibited. FPSTIreserves the right to immediately suspend the service, blacklist the subscriber and confiscate the INTERNET MODEM foundtampered.
+
+            12. Materials, equipments and accessories charged to the SUBSCRIBER are considered as FPSTIproperty during the existence and validity of the contract and even beyond the termination thereof if the SUBSCRIBER still has an outstanding or unpaid account with FPSTI.
+
+            13. The SUBSCRIBER shall take full responsibility in safeguarding and preserving all properties of FPSTI, entrusted and installed within the premises of the SUBSCRIBER property until the same are officially turned over to the latter.
+
+            14. The SUBSCRIBER shall be liable and responsible for any damage to FPSTI’s property, facilities and equipment entrusted to the former, caused by the negligence, misuse and abuse by the SUBSCRIBER, except through the normal wear and tear. The SUBSCRIBER shall pay corresponding charges, if any, for the necessary repair or replacement of damaged property facilities and equipment.
+
+            15. The SUBSCRIBER is aware and cognizant of the fact that FPSTI is making use of poles owned by one or more utility companies, and that, these companies have controlling interests over the utilization of such poles. Thus, the SUBSCRIBER agrees to hold FPSTIfree from any and all claims, losses or damage that the SUBSCRIBER may incur or suffer in the event that discontinuance of the use of the said poles will transpire beyond the control of FPSTI.
+
+            16.	FPSTI shall not be responsible for any delays, interruptions, non-service which are out of bounds of its operational limits due to power failure, acts of God, acts of nature, acts of any government or supernatural authority, war or public emergency, accident, fire, lightning, riot, strikes, lock-outs, industrial disputes and failure/breakdown of SUBSCRIBER’S owned and managed network facilities.
+
+             17. The system installed and operated by FPSTI is passive-oriented, low voltage DC-type incapable of causing any damage to the computer or television set. This system has been tested and approved by the proper government agency and its satisfactory reception is dependent on a properly functioning computer or television set to be provided and maintained by the SUBSCRIBER under his exclusive responsibility. FPSTIshall not have any responsibility whatsoever with respect to the condition, defect or performance of the SUBSCRIBER’s computer and/or television set(s) or any such other damages.
+            ",
+            0,
+            'J'
+            );
+
+            $pdf->Ln(5);
+            $pdf->Cell(0,5,'Page 1 of 2',0,1,'R');
+
+
+                        /* ================= PAGE 5 : CONTRACT PAGE 2 ================= */
+            $pdf->AddPage();
+
+            $pdf->SetFont('helvetica','',7.5);
+
+            $pdf->MultiCell(
+                0,
+                5, 
+                "
+            18. FPSTI shall have the right to automatically deactivate the INTERNET MODEM in case of:
+            a.) Non-payment of one (1) month for Bundle Subscribers. (Internet and Cable), and/or effect immediate disconnection and removal of the INTERNET MODEM/ equipment/properties from the SUBSCRIBER’s premises upon non-settlement of the account FIFTEEN DAYS (15) after the grace period extended from due date;
+            b.) Violation by the SUBSCRIBER of any of the foregoing provisions of this CONTRACT, subject to FPSTI’s right to collect all the unpaid dues through the proper authority or court of jurisdiction.
+
+            19. If disconnection and discontinuation of internet services are effected by FPSTI due to default of bill payments on the part of the SUBSCRIBER, the latter may apply for reconnection and resumption of subscription services for the remainder of the present CONTRACT after satisfying the conditions for reconnection.
+
+            20. Except by expressed written waiver, any delay, neglect or forbearance of FPSTI to require or enforce any of the provisions of this CONTRACT shall not prejudice the right of FPSTI to exercise or to act strictly afterwards in accordance with the said provisions.
+
+            21. Any action arising from this CONTRACT shall be filed in the appropriate Trial Court in Calbayog City to the exclusion of any court. The aggrieved party shall be entitled to attorney’s fees and collection expenses equivalent to 25% of the total amount due which in no case shall be less than Php 3,000.00.
+
+            22. This contract shall be enforced until terminated by FPSTI or by the SUBSCRIBER upon five-day (5) prior notice in writing with or without cause. All unpaid dues, arrears and monthly subscriptions for the period shall be settled by the latter prior to the effectivity of the termination.
+
+            IN WITNESS THEREOF, the parties hereto have hereunto signed this contract the day of year first above-written at Bernate Compound, Brgy. Capoocan, Calbayog City, Philippines.
+            ",
+                0,
+                'J',
+                false
+            );
+
+            $pdf->Ln(15);
+
+            /* ================= SIGNATURES ================= */
+
+            $pageWidth = 216;
+
+            /* LEFT SIDE (SUBSCRIBER) */
+            $leftX = 30;
+
+            /* RIGHT SIDE (FPSTI) */
+            $rightX = 120;
+
+            /* SIGNATURE IMAGE */
+            if (!empty($sigPath) && file_exists($sigPath)) {
+                $pdf->Image($sigPath, $leftX, $pdf->GetY(), 50, 0, 'PNG');
+            }
+
+            $pdf->Ln(25);
+
+            /* SUBSCRIBER NAME */
+            $pdf->SetFont('helvetica','U',10);
+            $pdf->SetX($leftX);
+            $pdf->Cell(60,6,$fullName,0,0,'C');
+
+            /* FPSTI LINE */
+            $pdf->SetX($rightX);
+            $pdf->Cell(60,6,'_________________________',0,1,'C');
+
+            $pdf->SetFont('helvetica','',10);
+
+            /* LABELS */
+            $pdf->SetX($leftX);
+            $pdf->Cell(60,6,'SUBSCRIBER',0,0,'C');
+
+            $pdf->SetX($rightX);
+            $pdf->Cell(60,6,'FPSTI REPRESENTATIVE',0,1,'C');
+
+            $pdf->Ln(10);
+
+            /* WITNESSES */
+            $pdf->Cell(90,6,'_________________________',0,0,'C');
+            $pdf->Cell(90,6,'_________________________',0,1,'C');
+
+            $pdf->Cell(90,6,'Witness',0,0,'C');
+            $pdf->Cell(90,6,'Witness',0,1,'C');
+
+            $pdf->Ln(10);
+
+            /* ================= ACKNOWLEDGEMENT ================= */
+
+            $pdf->SetFont('helvetica','B',10);
+            $pdf->Cell(0,6,'ACKNOWLEDGEMENT',0,1,'C');
+
+            $pdf->Ln(2);
+
+            $pdf->SetFont('helvetica','',9);
+
+            /* LEFT HEADER */
+            $pdf->Cell(0,5,'REPUBLIC OF THE PHILIPPINES )',0,1);
+            $pdf->Cell(0,5,'CITY OF CALBAYOG           ) SS',0,1);
+            $pdf->Cell(0,5,'PROVINCE OF SAMAR         )',0,1);
+
+            $pdf->Ln(3);
+
+            /* DATE */
+            $day   = date('j');
+            $month = date('F');
+            $year  = date('Y');
+            $fullDate = $month . ' ' . $day . ', ' . $year;
+
+            /* INTRO */
+            $pdf->MultiCell(0,5,"
+            BEFORE ME, personally appeared this _________ in _________, Calbayog City, Philippines, the following with their evidence of identity written opposite their name below:
+            ");
+
+            $pdf->Ln(3);
+
+            /* HEADER LINE */
+            $pdf->SetFont('helvetica','B',9);
+            $pdf->Cell(70,6,'Name',0,0,'L');
+            $pdf->Cell(50,6,'ID No.',0,0,'L');
+            $pdf->Cell(70,6,'Date/Place of Issue',0,1,'L');
+
+            /* UNDERLINE HEADER */
+            $pdf->Cell(70,6,'______________________________',0,0);
+            $pdf->Cell(50,6,'____________________',0,0);
+            $pdf->Cell(70,6,'______________________________',0,1);
+
+            /* DATA LINE */
+            $pdf->SetFont('helvetica','',9);
+            $pdf->Cell(50,6,'',0,0);
+            $pdf->Cell(70,6,'',0,1);
+
+            /* EXTRA BLANK LINE */
+            $pdf->Cell(70,6,'______________________________',0,0);
+            $pdf->Cell(50,6,'____________________',0,0);
+            $pdf->Cell(70,6,'______________________________',0,1);
+
+            $pdf->Ln(4);
+
+            /* PARAGRAPH */
+            $pdf->MultiCell(0,5,"
+            All known to me and to me known to be the same persons who executed the foregoing instrument and they acknowledged that the same is their free and voluntary act and deed. This instrument consists of two (2) pages including the page where this acknowledgement is written, signed by the parties together with their instrumental witnesses in all pages hereof.
+            ");
+
+            $pdf->Ln(3);
+
+            $pdf->MultiCell(0,5,"
+            Witness my hand and seal, on the day, year and place first written above.
+            ");
+
+            $pdf->Ln(5);
+
+            /* DOC DETAILS */
+            $pdf->Cell(0,5,'Doc. No. _______',0,1);
+            $pdf->Cell(0,5,'Page No. _______',0,1);
+            $pdf->Cell(0,5,'Book No. _______',0,1);
+            $pdf->Cell(0,5,'Series of _______',0,1);
+
+            $pdf->Ln(5);
+            $pdf->Cell(0,5,'Page 2 of 2',0,1,'R');
+
         /* ================= SAVE PDF ================= */
         $cleanName = preg_replace('/[^A-Za-z0-9\- ]/', '', $companyName);
         $cleanName = str_replace(' ', '_', trim($cleanName));
@@ -1960,7 +2201,7 @@ if (isset($sheetUrls[$branch])) {
 
             /* ================= BASIC FEES ================= */
 
-            sectionHeader($pdf,"BASIC CHARGES & FEE");
+            residentialSectionHeader($pdf,"BASIC CHARGES & FEE");
             
             $pdf->SetFont('helvetica','',10);
             
@@ -1980,7 +2221,7 @@ if (isset($sheetUrls[$branch])) {
 
             /* ================= RATE ================= */
 
-            residentialSectionHeader($pdf->Cell(0,6,"Subscription Plan",0,1));
+            residentialSectionHeader($pdf,"Subscription");
 
             $pdf->SetFont('helvetica','',10);
 
@@ -2167,6 +2408,248 @@ if (isset($sheetUrls[$branch])) {
             $pdf->SetTextColor(0,0,255);
             $pdf->Cell(0,6,'Open in Google Maps: '.$googleMapLink,0,1,'C');
             $pdf->SetTextColor(0,0,0);
+
+
+            /* ================= PAGE 4 : CONTRACT PAGE 1 ================= */
+            $pdf->AddPage();
+
+            $pdf->SetFont('helvetica','B',12);
+            $pdf->Cell(0,6,'CONTRACT AGREEMENT',0,1,'C');
+
+            $pdf->Ln(3);
+
+            $pdf->SetFont('helvetica','',8);
+
+            /* DATE */
+            $day   = date('j');
+            $month = date('F');
+            $year  = date('Y');
+
+            /* FULL ADDRESS */
+            $fullAddress = trim(
+                ($request->street ?? '') . ', ' .
+                ($request->barangay ?? '') . ', ' .
+                ($request->city ?? '')
+            );
+
+            /* BRANCH FORMAT */
+            $branchMap = [
+                'calbayog' => 'Calbayog City',
+                'catbalogan' => 'Catbalogan City',
+                'sanjorge' => 'San Jorge',
+                'allen' => 'Allen',
+                'catarman' => 'Catarman',
+                'mondragon' => 'Mondragon',
+                'tacloban' => 'Tacloban City',
+                'palo' => 'Palo'
+            ];
+
+            $branchText = $branchMap[$request->branch] ?? $request->branch;
+
+            /* CONTENT */
+            $pdf->MultiCell(0,5,"
+            KNOW ALL MEN BY THESE PRESENTS:
+
+            This CONTRACT SUBSCRIPTION is made and entered into this day of {$day} of {$month}, {$year}
+            by and between FIL PRODUCTS SERVICE TELEVISION OF CALBAYOG, INC., a corporation duly organized and existing under and by virtue of Philippine laws with principal office at Bernate Compound, Brgy. Capoocan, Calbayog City, Philippines, hereinafter referred to as FPSTI:
+
+            AND
+
+            I {$fullName}, of legal age, and resident of {$fullAddress}, hereinafter referred to as the SUBSCRIBER.
+
+            WITNESSETH:
+
+            1. FPSTI is an entity authorized by law to build and maintain satellite receiver and cable lines in {$branchText}, Samar, and provide the SUBSCRIBER with cable TV and internet connection. FPSTIshall not be held legally liable for any change, injury, or illegal acts that the subscribers might have caused in the use of the said services.
+
+            2. does not give warranty or guarantee that the cable TV and internet connection it will provide to the subscriber will be free from interruption. 
+
+            3. FPSTI exercises no control over the content of the information that would pass through FPSTI’s cable TV and internet connection facilities, thereby freeing it from any liability whatsoever in whatever form.
+
+            4. The SUBSCRIBER agrees to pay FPSTIthe one-time installation charges, one-month deposit and other applicable basic charges and fees as agreed upon by the SUBSCRIBERin the application form that is signed. All charges and fees shall be non-refundable.The one-month deposit being non-refundable may be consumed to cover the last month of this contract, or may be made part of the Pre-Termination Fee as provided in paragraph 8 hereof.
+
+            5. The monthly subscription fee for the cable TV and internet connection, whether individually separate or as a package, shall become due and payable without necessity of demand or billing upon the end of each billing cycle.
+
+            6. FPSTI reserves the right to increase the subscription fees and other charges upon prior notice to the subscriber. The FPSTIshall notify the subscriber 15 days prior to its implementation by posting the same in all FPSTIcollection offices. 
+
+            7. All payment of subscription fees and charges shall be made at any FPSTI collection office or by collecting agencies authorized and accredited by FPSTI.
+
+            8. The Internet Modem that FPSTI assigns to SUBSCRIBER, once connected, is not transferrable. The right to use the Internet Modem shall not be leased, transferred or assigned to another person without a written consent and notification from FPSTI. The right to use the service is not transferrable. Accounts are for SUBSCRIBER’s use only. The cable TV and internet connection provided by FPSTIfor the SUBSCRIBER are subject to a lock-in period of three (3) years. A pre-termination fee of the equivalent in PESOS (Monthly Subscription Fee x 3 months)shall be payable by the SUBSCRIBER to FPSTI; otherwise, the billing for the monthly subscription will continue to take effect.
+
+            9. FPSTI shall be responsible in the maintenance and repair of its cable and fiber optic lines. The SUBSCRIBER agrees that only duly authorized employees/technicians of FPSTI shall be allowed to enter the former’s premises for ocular inspection/installation/disconnection/pull-out of equipments and/or repair purposes during the reasonable hours of the day. 
+
+            10. The SUBSCRIBER agrees to grant FPSTIeasement to use an existing passage forcable TV and internet connection in the interior or neighboring premises or areas. FPSTI shall be entitled free of charge to an easement over the SUBSCRIBER’s premises for the passage of repairmen, crossing or laying of cable wire, whether aerial or underground and other connection facilities.
+
+            11. Tampering with the INTERNET MODEM is strictly prohibited. FPSTIreserves the right to immediately suspend the service, blacklist the subscriber and confiscate the INTERNET MODEM foundtampered.
+
+            12. Materials, equipments and accessories charged to the SUBSCRIBER are considered as FPSTIproperty during the existence and validity of the contract and even beyond the termination thereof if the SUBSCRIBER still has an outstanding or unpaid account with FPSTI.
+
+            13. The SUBSCRIBER shall take full responsibility in safeguarding and preserving all properties of FPSTI, entrusted and installed within the premises of the SUBSCRIBER property until the same are officially turned over to the latter.
+
+            14. The SUBSCRIBER shall be liable and responsible for any damage to FPSTI’s property, facilities and equipment entrusted to the former, caused by the negligence, misuse and abuse by the SUBSCRIBER, except through the normal wear and tear. The SUBSCRIBER shall pay corresponding charges, if any, for the necessary repair or replacement of damaged property facilities and equipment.
+
+            15. The SUBSCRIBER is aware and cognizant of the fact that FPSTI is making use of poles owned by one or more utility companies, and that, these companies have controlling interests over the utilization of such poles. Thus, the SUBSCRIBER agrees to hold FPSTIfree from any and all claims, losses or damage that the SUBSCRIBER may incur or suffer in the event that discontinuance of the use of the said poles will transpire beyond the control of FPSTI.
+
+            16.	FPSTI shall not be responsible for any delays, interruptions, non-service which are out of bounds of its operational limits due to power failure, acts of God, acts of nature, acts of any government or supernatural authority, war or public emergency, accident, fire, lightning, riot, strikes, lock-outs, industrial disputes and failure/breakdown of SUBSCRIBER’S owned and managed network facilities.
+
+             17. The system installed and operated by FPSTI is passive-oriented, low voltage DC-type incapable of causing any damage to the computer or television set. This system has been tested and approved by the proper government agency and its satisfactory reception is dependent on a properly functioning computer or television set to be provided and maintained by the SUBSCRIBER under his exclusive responsibility. FPSTIshall not have any responsibility whatsoever with respect to the condition, defect or performance of the SUBSCRIBER’s computer and/or television set(s) or any such other damages.
+            ",
+            0,
+            'J'
+            );
+
+            $pdf->Ln(5);
+            $pdf->Cell(0,5,'Page 1 of 2',0,1,'R');
+
+
+                        /* ================= PAGE 5 : CONTRACT PAGE 2 ================= */
+            $pdf->AddPage();
+
+            $pdf->SetFont('helvetica','',7.5);
+
+            $pdf->MultiCell(
+                0,
+                5, 
+                "
+            18. FPSTI shall have the right to automatically deactivate the INTERNET MODEM in case of:
+            a.) Non-payment of one (1) month for Bundle Subscribers. (Internet and Cable), and/or effect immediate disconnection and removal of the INTERNET MODEM/ equipment/properties from the SUBSCRIBER’s premises upon non-settlement of the account FIFTEEN DAYS (15) after the grace period extended from due date;
+            b.) Violation by the SUBSCRIBER of any of the foregoing provisions of this CONTRACT, subject to FPSTI’s right to collect all the unpaid dues through the proper authority or court of jurisdiction.
+
+            19. If disconnection and discontinuation of internet services are effected by FPSTI due to default of bill payments on the part of the SUBSCRIBER, the latter may apply for reconnection and resumption of subscription services for the remainder of the present CONTRACT after satisfying the conditions for reconnection.
+
+            20. Except by expressed written waiver, any delay, neglect or forbearance of FPSTI to require or enforce any of the provisions of this CONTRACT shall not prejudice the right of FPSTI to exercise or to act strictly afterwards in accordance with the said provisions.
+
+            21. Any action arising from this CONTRACT shall be filed in the appropriate Trial Court in Calbayog City to the exclusion of any court. The aggrieved party shall be entitled to attorney’s fees and collection expenses equivalent to 25% of the total amount due which in no case shall be less than Php 3,000.00.
+
+            22. This contract shall be enforced until terminated by FPSTI or by the SUBSCRIBER upon five-day (5) prior notice in writing with or without cause. All unpaid dues, arrears and monthly subscriptions for the period shall be settled by the latter prior to the effectivity of the termination.
+
+            IN WITNESS THEREOF, the parties hereto have hereunto signed this contract the day of year first above-written at Bernate Compound, Brgy. Capoocan, Calbayog City, Philippines.
+            ",
+                0,
+                'J',
+                false
+            );
+
+            $pdf->Ln(15);
+
+            /* ================= SIGNATURES ================= */
+
+            $pageWidth = 216;
+
+            /* LEFT SIDE (SUBSCRIBER) */
+            $leftX = 30;
+
+            /* RIGHT SIDE (FPSTI) */
+            $rightX = 120;
+
+            /* SIGNATURE IMAGE */
+            if (!empty($sigPath) && file_exists($sigPath)) {
+                $pdf->Image($sigPath, $leftX, $pdf->GetY(), 50, 0, 'PNG');
+            }
+
+            $pdf->Ln(25);
+
+            /* SUBSCRIBER NAME */
+            $pdf->SetFont('helvetica','U',10);
+            $pdf->SetX($leftX);
+            $pdf->Cell(60,6,$fullName,0,0,'C');
+
+            /* FPSTI LINE */
+            $pdf->SetX($rightX);
+            $pdf->Cell(60,6,'_________________________',0,1,'C');
+
+            $pdf->SetFont('helvetica','',10);
+
+            /* LABELS */
+            $pdf->SetX($leftX);
+            $pdf->Cell(60,6,'SUBSCRIBER',0,0,'C');
+
+            $pdf->SetX($rightX);
+            $pdf->Cell(60,6,'FPSTI REPRESENTATIVE',0,1,'C');
+
+            $pdf->Ln(10);
+
+            /* WITNESSES */
+            $pdf->Cell(90,6,'_________________________',0,0,'C');
+            $pdf->Cell(90,6,'_________________________',0,1,'C');
+
+            $pdf->Cell(90,6,'Witness',0,0,'C');
+            $pdf->Cell(90,6,'Witness',0,1,'C');
+
+            $pdf->Ln(10);
+
+            /* ================= ACKNOWLEDGEMENT ================= */
+
+            $pdf->SetFont('helvetica','B',10);
+            $pdf->Cell(0,6,'ACKNOWLEDGEMENT',0,1,'C');
+
+            $pdf->Ln(2);
+
+            $pdf->SetFont('helvetica','',9);
+
+            /* LEFT HEADER */
+            $pdf->Cell(0,5,'REPUBLIC OF THE PHILIPPINES )',0,1);
+            $pdf->Cell(0,5,'CITY OF CALBAYOG           ) SS',0,1);
+            $pdf->Cell(0,5,'PROVINCE OF SAMAR         )',0,1);
+
+            $pdf->Ln(3);
+
+            /* DATE */
+            $day   = date('j');
+            $month = date('F');
+            $year  = date('Y');
+            $fullDate = $month . ' ' . $day . ', ' . $year;
+
+            /* INTRO */
+            $pdf->MultiCell(0,5,"
+            BEFORE ME, personally appeared this _________ in _________, Calbayog City, Philippines, the following with their evidence of identity written opposite their name below:
+            ");
+
+            $pdf->Ln(3);
+
+            /* HEADER LINE */
+            $pdf->SetFont('helvetica','B',9);
+            $pdf->Cell(70,6,'Name',0,0,'L');
+            $pdf->Cell(50,6,'ID No.',0,0,'L');
+            $pdf->Cell(70,6,'Date/Place of Issue',0,1,'L');
+
+            /* UNDERLINE HEADER */
+            $pdf->Cell(70,6,'______________________________',0,0);
+            $pdf->Cell(50,6,'____________________',0,0);
+            $pdf->Cell(70,6,'______________________________',0,1);
+
+            /* DATA LINE */
+            $pdf->SetFont('helvetica','',9);
+            $pdf->Cell(50,6,'',0,0);
+            $pdf->Cell(70,6,'',0,1);
+
+            /* EXTRA BLANK LINE */
+            $pdf->Cell(70,6,'______________________________',0,0);
+            $pdf->Cell(50,6,'____________________',0,0);
+            $pdf->Cell(70,6,'______________________________',0,1);
+
+            $pdf->Ln(4);
+
+            /* PARAGRAPH */
+            $pdf->MultiCell(0,5,"
+            All known to me and to me known to be the same persons who executed the foregoing instrument and they acknowledged that the same is their free and voluntary act and deed. This instrument consists of two (2) pages including the page where this acknowledgement is written, signed by the parties together with their instrumental witnesses in all pages hereof.
+            ");
+
+            $pdf->Ln(3);
+
+            $pdf->MultiCell(0,5,"
+            Witness my hand and seal, on the day, year and place first written above.
+            ");
+
+            $pdf->Ln(5);
+
+            /* DOC DETAILS */
+            $pdf->Cell(0,5,'Doc. No. _______',0,1);
+            $pdf->Cell(0,5,'Page No. _______',0,1);
+            $pdf->Cell(0,5,'Book No. _______',0,1);
+            $pdf->Cell(0,5,'Series of _______',0,1);
+
+            $pdf->Ln(5);
+            $pdf->Cell(0,5,'Page 2 of 2',0,1,'R');
             
             /* ================= GENERATE PDF CONTENT ================= */
 
@@ -2253,7 +2736,7 @@ if (isset($sheetUrls[$branch])) {
             /* ✅ SEND TO CUSTOMER */
             if ($customerEmail) {
                 $mail->addAddress($customerEmail);
-                $mail->addReplyTo('info.cyg@filproducts.ph', 'Fil Products Samar Support'); // Keeps replies directed to your support team
+                $mail->addReplyTo('info.cyg@filproducts.ph', 'Fil Products Samar Support');
             }
 
             /* ✅ SEND TO SELECTED BRANCH */
@@ -2275,38 +2758,58 @@ if (isset($sheetUrls[$branch])) {
 
             $mail->Subject = "Residential Application - " . $safeFullName;
 
-            $mail->Body = "
-            <div style='font-family: Arial, sans-serif; background-color: #f9fafb; padding: 20px; line-height: 1.6; color: #333;'>
-                <div style='max-width: 600px; margin: 0 auto; background-color: #FFFFFF; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;'>
+            $mail->Body = '
+            <div style="font-family: Arial, sans-serif; background-color: #f9fafb; padding: 20px; line-height: 1.6; color: #333;">
+                <div style="max-width: 600px; margin: 0 auto; background-color: #FFFFFF; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e5e7eb;">
                     
-                    <div style='background-color: #003366; color: #FFFFFF; padding: 20px; text-align: center;'>
-                        <h2 style='margin: 0; font-size: 20px;'>Residential Application Received</h2>
+                    <div style="background-color: #003366; color: #FFFFFF; padding: 20px; text-align: center;">
+                        <h2 style="margin: 0; font-size: 20px;">Residential Application Received</h2>
                     </div>
                     
-                    <div style='padding: 25px;'>
-                        <p style='margin-top: 0; color: #4b5563;'>A new residential application has been successfully submitted and recorded in our system.</p>
+                    <div style="padding: 25px;">
+                        <p style="margin-top: 0; color: #4b5563;">
+                            A new residential application has been successfully submitted and recorded in our system.
+                        </p>
                         
-                        <h4 style='color: #003366; margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px;'>Application Details</h4>
+                        <h4 style="color: #003366; margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px;">
+                            Application Details
+                        </h4>
                         
-                        <table style='width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 14px;'>
-                            <tr><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #6b7280; width: 35%;'><strong>Applicant Name:</strong></td><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #111827;'><strong>{$safeFullName}</strong></td></tr>
-                            <tr><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #6b7280;'><strong>Email Address:</strong></td><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #111827;'>{$customerEmail}</td></tr>
-                            <tr><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #6b7280;'><strong>Selected Branch:</strong></td><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #111827;'>{$branch}</td></tr>
-                            <tr><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #6b7280;'><strong>Plan Selected:</strong></td><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; font-weight: bold; color: #003366;'>{$safePlan}</td></tr>
+                        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 14px;">
+                            <tr>
+                                <td style="padding: 10px; border-bottom: 1px solid #f3f4f6;"><strong>Applicant Name:</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #f3f4f6;"><strong>' . htmlspecialchars($safeFullName) . '</strong></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border-bottom: 1px solid #f3f4f6;"><strong>Email Address:</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #f3f4f6;">' . htmlspecialchars($customerEmail) . '</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border-bottom: 1px solid #f3f4f6;"><strong>Selected Branch:</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #f3f4f6;">' . htmlspecialchars($branchText) . '</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border-bottom: 1px solid #f3f4f6;"><strong>Plan Selected:</strong></td>
+                                <td style="padding: 10px; border-bottom: 1px solid #f3f4f6; color:#003366;"><strong>' . htmlspecialchars($safePlan) . '</strong></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px;"><strong>Date Submitted:</strong></td>
+                                <td style="padding: 10px;">' . date('F j, Y h:i A') . '</td>
+                            </tr>
                         </table>
 
-                        <div style='background-color: #f3f4f6; padding: 15px; border-left: 4px solid #003366; border-radius: 4px; color: #4b5563; font-size: 13px;'>
-                            <strong>Note:</strong> Attached to this email is a PDF copy of the application form and up to two uploaded supporting documents.
+                        <div style="background-color: #f3f4f6; padding: 15px; border-left: 4px solid #003366;">
+                            <strong>Note:</strong> Attached is your application PDF.
                         </div>
                     </div>
 
-                    <div style='background-color: #f9fafb; padding: 15px; text-align: center; font-size: 12px; color: #9ca3af; border-top: 1px solid #e5e7eb;'>
-                        System Generated Email • Submitted via Fil Products System
+                    <div style="background-color: #f9fafb; padding: 15px; text-align: center; font-size: 12px; color: #9ca3af;">
+                        System Generated Email • Fil Products System
                     </div>
                     
                 </div>
             </div>
-            ";
+            ';
 
             /* ============================
                ATTACHMENTS
@@ -2618,7 +3121,7 @@ if (isset($sheetUrls[$branch])) {
 
             /* ================= BASIC FEES ================= */
 
-            sectionHeader($pdf,"BASIC CHARGES & FEE");
+            upgradeSectionHeader($pdf,"BASIC CHARGES & FEE");
             
             $pdf->SetFont('helvetica','',10);
             
@@ -2636,11 +3139,11 @@ if (isset($sheetUrls[$branch])) {
             
             $pdf->Ln(3);
             /* ================= RATE ================= */
-            upgradeSectionHeader($pdf->Cell(0,6,"Subscription Plan",0,1));
+            upgradeSectionHeader($pdf,"Subscription");
 
             $pdf->SetFont('helvetica','',10);
 
-            $selectedPlan = $_POST['monthly_subscription'] ?? '';
+            $selectedPlan = $data['monthly_subscription'] ?? '';
 
             $pdf->Cell(120,6,$selectedPlan,0,1);
 
