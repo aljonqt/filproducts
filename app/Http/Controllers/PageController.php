@@ -915,7 +915,7 @@ if (isset($sheetUrls[$branch])) {
             $pdf->Cell(0,5,'Page 1 of 2',0,1,'R');
 
 
-                        /* ================= PAGE 5 : CONTRACT PAGE 2 ================= */
+        /* ================= PAGE 5 : CONTRACT PAGE 2 ================= */
             $pdf->AddPage();
 
             $pdf->SetFont('helvetica','',7.5);
@@ -1585,15 +1585,14 @@ if (isset($sheetUrls[$branch])) {
 
 
         /* ================= PAGE 2 ================= */
-        $pdf->AddPage(); 
+            $pdf->AddPage();
+            /* DECLARATION */
+            $pdf->SetFont('helvetica', 'B', 11);
+            $pdf->Cell(0, 6, 'SUBSCRIBER\'S DECLARATIONS', 0, 1);
 
-        /* DECLARATION */
-        $pdf->SetFont('helvetica', 'B', 11);
-        $pdf->Cell(0, 6, 'SUBSCRIBER\'S DECLARATIONS', 0, 1);
+            $pdf->SetFont('helvetica', '', 9);
 
-        $pdf->SetFont('helvetica', '', 9);
-
-        $declaration = "
+            $declaration = "
             1. I hereby confirm that the foregoing information is true and correct, that supporting documents attached hereto are
             genuine and authentic, and that I voluntarily submitted the said information and documents for the purpose of facilitating my
             application to the Service.
@@ -1631,7 +1630,8 @@ if (isset($sheetUrls[$branch])) {
             then I agree to pay the relevant fees, charges and penalties imposed by you.
 
             8. I am aware of the fees, rates and charges relevant of the service availed of and I agree to pay the same within the due
-            dates. I understand that I will be subject to, and hereby agree and undertake, interest and penalties for late payment or non-payment stated in the terms and condition.
+            dates. I understand that I will be subject to, and hereby agree and undertake, interest and penalties for late payment or 
+            non-payment stated in the terms and condition.
 
             9. I hereby confirm that I have read and understood the Terms and Conditions of our Subscription Agreement and that I
             shall strictly comply and abide by these terms and conditions and any future amendments thereto.
@@ -1643,9 +1643,9 @@ if (isset($sheetUrls[$branch])) {
             equipments).
         ";
 
-        $pdf->MultiCell(0, 5, $declaration);
+            $pdf->MultiCell(0, 5, $declaration);
 
-        $pdf->Ln(10);
+            $pdf->Ln(10);
 
 
         /* ================= REUSE SAVED SIGNATURE ================= */
@@ -2453,7 +2453,7 @@ if (isset($sheetUrls[$branch])) {
             $pdf->SetTextColor(0,0,0);
 
 
-            /* ================= PAGE 4 : CONTRACT PAGE 1 ================= */
+         /* ================= PAGE 4 : CONTRACT PAGE 1 ================= */
             $pdf->AddPage();
 
             $pdf->SetFont('helvetica','B',12);
@@ -2489,7 +2489,7 @@ if (isset($sheetUrls[$branch])) {
 
             $branchText = $branchMap[$request->branch] ?? $request->branch;
 
-            /* CONTENT */
+        /* CONTENT */
         $pdf->MultiCell(0,5,"
         KNOW ALL MEN BY THESE PRESENTS:
 
@@ -2578,7 +2578,7 @@ if (isset($sheetUrls[$branch])) {
             $pdf->Cell(0,5,'Page 1 of 2',0,1,'R');
 
 
-                       /* ================= PAGE 5 : CONTRACT PAGE 2 ================= */
+        /* ================= PAGE 5 : CONTRACT PAGE 2 ================= */
             $pdf->AddPage();
 
             $pdf->SetFont('helvetica','',7.5);
@@ -2614,7 +2614,7 @@ if (isset($sheetUrls[$branch])) {
                 false
             );
 
-            $pdf->Ln(15);
+            $pdf->Ln(10);
 
             /* ================= SIGNATURES ================= */
 
@@ -3242,54 +3242,55 @@ if (isset($sheetUrls[$branch])) {
             $pdf->SetFont('helvetica', '', 9);
 
             $declaration = "
-                1. I hereby confirm that the foregoing information is true and correct, that supporting documents attached hereto are
-                genuine and authentic, and that I voluntarily submitted the said information and documents for the purpose of facilitating my
-                application to the Service.
+            1. I hereby confirm that the foregoing information is true and correct, that supporting documents attached hereto are
+            genuine and authentic, and that I voluntarily submitted the said information and documents for the purpose of facilitating my
+            application to the Service.
 
-                2. I hereby further confirm that I applied for and, once my application is approved, that I have voluntarily availed of the
-                plans, products and/or services chosen by me in this application form, as well as the inclusions and special features of such
-                plans, products and/or services and that any enrolment I have indicated herein have been knowingly made by me.
+            2. I hereby further confirm that I applied for and, once my application is approved, that I have voluntarily availed of the
+            plans, products and/or services chosen by me in this application form, as well as the inclusions and special features of such
+            plans, products and/or services and that any enrolment I have indicated herein have been knowingly made by me.
 
-                3. I hereby authorize FIL PRODUCTS SERVICE TELEVISION OF CALBAYOG, INC. (hereinafter you) or any person or
-                entity authorized by you, to verify any information about me and/or documents available from whatever source including but
-                not limited to (i) your subsidiaries, affiliates, and/or their service providers: or (ii) banks, credit card companies, and other
-                lending and/or financial institution, and I hereby authorize the holder, controller and processor of such information and/or
-                document, has the same is defined in Republic Act No. 10173 (otherwise known as Data Privacy Act of 2012), or any
-                amendment or modification of the same, to conform, release and verify the existence, truthfulness, and/or accuracy of such
-                information and/or document.
-                
-                4. I give you permission to use, disclose and share with your business partners, subsidiaries and affiliates (and their
-                business partners) information contained in this application about me and my subscription, my network and connections, my
-                service usage and payment patterns, information about the device and equipment I use to access you service, websites
-                and app used in your services, information from your third party partners and advertisers, including any data or analytics
-                derived therefrom, in whatever form (hereinafter Personal Information), for the following purposes: processing any
-                application or request for availment of any product and/or service which they offer, improving your/ their products and
-                services, credit investigation and scoring, advertising and promoting new products and services, to the end of improving my
-                and/or the public's customer experience.
+            3. I hereby authorize FIL PRODUCTS SERVICE TELEVISION OF CALBAYOG, INC. (hereinafter you) or any person or
+            entity authorized by you, to verify any information about me and/or documents available from whatever source including but
+            not limited to (i) your subsidiaries, affiliates, and/or their service providers: or (ii) banks, credit card companies, and other
+            lending and/or financial institution, and I hereby authorize the holder, controller and processor of such information and/or
+            document, has the same is defined in Republic Act No. 10173 (otherwise known as Data Privacy Act of 2012), or any
+            amendment or modification of the same, to conform, release and verify the existence, truthfulness, and/or accuracy of such
+            information and/or document.
+            
+            4. I give you permission to use, disclose and share with your business partners, subsidiaries and affiliates (and their
+            business partners) information contained in this application about me and my subscription, my network and connections, my
+            service usage and payment patterns, information about the device and equipment I use to access you service, websites
+            and app used in your services, information from your third party partners and advertisers, including any data or analytics
+            derived therefrom, in whatever form (hereinafter Personal Information), for the following purposes: processing any
+            application or request for availment of any product and/or service which they offer, improving your/ their products and
+            services, credit investigation and scoring, advertising and promoting new products and services, to the end of improving my
+            and/or the public's customer experience.
 
-                5. I consent to your business partners', subsidiaries' and affiliates' (and their business partners') disclosure to you of any
-                Personal Information in their possession to achieve any of the purposes stated above.
+            5. I consent to your business partners', subsidiaries' and affiliates' (and their business partners') disclosure to you of any
+            Personal Information in their possession to achieve any of the purposes stated above.
 
-                6. I hereby likewise authorize you, your business partners, subsidiaries and affiliates, to send me SMS alerts or any
-                communication, advertisement or promotional material pertaining to any new or current product and/or service offered by
-                you, your business partners, subsidiaries and affiliates
+            6. I hereby likewise authorize you, your business partners, subsidiaries and affiliates, to send me SMS alerts or any
+            communication, advertisement or promotional material pertaining to any new or current product and/or service offered by
+            you, your business partners, subsidiaries and affiliates
 
-                7. I acknowledge and agree to the Holding Period for the relevant service availed of. If I choose to downgrade my plan,
-                transfer and rights or obligations of my subscription or pre-terminate or cancel my subscription within the Holding Period
-                then I agree to pay the relevant fees, charges and penalties imposed by you.
+            7. I acknowledge and agree to the Holding Period for the relevant service availed of. If I choose to downgrade my plan,
+            transfer and rights or obligations of my subscription or pre-terminate or cancel my subscription within the Holding Period
+            then I agree to pay the relevant fees, charges and penalties imposed by you.
 
-                8. I am aware of the fees, rates and charges relevant of the service availed of and I agree to pay the same within the due
-                dates. I understand that I will be subject to, and hereby agree and undertake, interest and penalties for late payment or non-payment stated in the terms and condition.
+            8. I am aware of the fees, rates and charges relevant of the service availed of and I agree to pay the same within the due
+            dates. I understand that I will be subject to, and hereby agree and undertake, interest and penalties for late payment or 
+            non-payment stated in the terms and condition.
 
-                9. I hereby confirm that I have read and understood the Terms and Conditions of our Subscription Agreement and that I
-                shall strictly comply and abide by these terms and conditions and any future amendments thereto.
+            9. I hereby confirm that I have read and understood the Terms and Conditions of our Subscription Agreement and that I
+            shall strictly comply and abide by these terms and conditions and any future amendments thereto.
 
-                10. I agree that this Subscription Agreement shall govern our relationship for the service currently availed of and the service
-                I will avail of in the future.
+            10. I agree that this Subscription Agreement shall govern our relationship for the service currently availed of and the service
+            I will avail of in the future.
 
-                11. I agree to pay my application's cancellation fee equivalent to 20% of application charges (Deposit, Installation fee and
-                equipments).
-            ";
+            11. I agree to pay my application's cancellation fee equivalent to 20% of application charges (Deposit, Installation fee and
+            equipments).
+        ";
 
             $pdf->MultiCell(0, 5, $declaration);
 
