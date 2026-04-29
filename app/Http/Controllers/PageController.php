@@ -301,7 +301,6 @@ if (isset($sheetUrls[$branch])) {
 
     }
 
-
     // FILBIZ INQUIRY //
     public function submitFilbiz(Request $request)
     {
@@ -698,7 +697,8 @@ if (isset($sheetUrls[$branch])) {
             then I agree to pay the relevant fees, charges and penalties imposed by you.
 
             8. I am aware of the fees, rates and charges relevant of the service availed of and I agree to pay the same within the due
-            dates. I understand that I will be subject to, and hereby agree and undertake, interest and penalties for late payment or non-payment stated in the terms and condition.
+            dates. I understand that I will be subject to, and hereby agree and undertake, interest and penalties for late payment or 
+            non-payment stated in the terms and condition.
 
             9. I hereby confirm that I have read and understood the Terms and Conditions of our Subscription Agreement and that I
             shall strictly comply and abide by these terms and conditions and any future amendments thereto.
@@ -826,52 +826,86 @@ if (isset($sheetUrls[$branch])) {
 
             $branchText = $branchMap[$request->branch] ?? $request->branch;
 
-            /* CONTENT */
-            $pdf->MultiCell(0,5,"
-            KNOW ALL MEN BY THESE PRESENTS:
+        /* CONTENT */
+        $pdf->MultiCell(0,5,"
+        KNOW ALL MEN BY THESE PRESENTS:
 
-            This CONTRACT SUBSCRIPTION is made and entered into this day of {$day} of {$month}, {$year}
-            by and between FIL PRODUCTS SERVICE TELEVISION OF CALBAYOG, INC., a corporation duly organized and existing under and by virtue of Philippine laws with principal office at Bernate Compound, Brgy. Capoocan, Calbayog City, Philippines, hereinafter referred to as FPSTI:
+        This CONTRACT SUBSCRIPTION is made and entered into this day of {$day} of {$month}, {$year}
+        by and between FIL PRODUCTS SERVICE TELEVISION OF CALBAYOG, INC., a corporation duly organized and existing under and 
+        by virtue of Philippine laws with principal office at Bernate Compound, Brgy. Capoocan, Calbayog City, Philippines, hereinafter referred to as FPSTI:
 
-            AND
+                                                                AND
 
-            I {$fullName}, of legal age, and resident of {$businessAddr}, hereinafter referred to as the SUBSCRIBER.
+        I {$fullName}, of legal age, and resident of {$businessAddr}, hereinafter referred to as the SUBSCRIBER.
 
-            WITNESSETH:
+                                                            WITNESSETH:
 
-            1. FPSTI is an entity authorized by law to build and maintain satellite receiver and cable lines in {$branchText}, Samar, and provide the SUBSCRIBER with cable TV and internet connection. FPSTIshall not be held legally liable for any change, injury, or illegal acts that the subscribers might have caused in the use of the said services.
+        1. FPSTI is an entity authorized by law to build and maintain satellite receiver and cable lines in {$branchText}, Samar, 
+        and provide the SUBSCRIBER with cable TV and internet connection. FPSTIshall not be held legally liable for any change, 
+        injury, or illegal acts that the subscribers might have caused in the use of the said services.
 
-            2. does not give warranty or guarantee that the cable TV and internet connection it will provide to the subscriber will be free from interruption. 
+        2. Does not give warranty or guarantee that the cable TV and internet connection it will provide to the subscriber 
+        will be free from interruption. 
 
-            3. FPSTI exercises no control over the content of the information that would pass through FPSTI’s cable TV and internet connection facilities, thereby freeing it from any liability whatsoever in whatever form.
+        3. FPSTI exercises no control over the content of the information that would pass through FPSTI’s cable TV and internet connection 
+        facilities, thereby freeing it from any liability whatsoever in whatever form.
 
-            4. The SUBSCRIBER agrees to pay FPSTIthe one-time installation charges, one-month deposit and other applicable basic charges and fees as agreed upon by the SUBSCRIBERin the application form that is signed. All charges and fees shall be non-refundable.The one-month deposit being non-refundable may be consumed to cover the last month of this contract, or may be made part of the Pre-Termination Fee as provided in paragraph 8 hereof.
+        4. The SUBSCRIBER agrees to pay FPSTIthe one-time installation charges, one-month deposit and other applicable basic charges and 
+        fees as agreed upon by the SUBSCRIBERin the application form that is signed. All charges and fees shall be non-refundable.
+        The one-month deposit being non-refundable may be consumed to cover the last month of this contract, or may be made part of the 
+        Pre-Termination Fee as provided in paragraph 8 hereof.
 
-            5. The monthly subscription fee for the cable TV and internet connection, whether individually separate or as a package, shall become due and payable without necessity of demand or billing upon the end of each billing cycle.
+        5. The monthly subscription fee for the cable TV and internet connection, whether individually separate or as a package, 
+        shall become due and payable without necessity of demand or billing upon the end of each billing cycle.
 
-            6. FPSTI reserves the right to increase the subscription fees and other charges upon prior notice to the subscriber. The FPSTIshall notify the subscriber 15 days prior to its implementation by posting the same in all FPSTIcollection offices. 
+        6. FPSTI reserves the right to increase the subscription fees and other charges upon prior notice to the subscriber. 
+        The FPSTIshall notify the subscriber 15 days prior to its implementation by posting the same in all FPSTIcollection offices. 
 
-            7. All payment of subscription fees and charges shall be made at any FPSTI collection office or by collecting agencies authorized and accredited by FPSTI.
+        7. All payment of subscription fees and charges shall be made at any FPSTI collection office or by collecting agencies authorized 
+        and accredited by FPSTI.
 
-            8. The Internet Modem that FPSTI assigns to SUBSCRIBER, once connected, is not transferrable. The right to use the Internet Modem shall not be leased, transferred or assigned to another person without a written consent and notification from FPSTI. The right to use the service is not transferrable. Accounts are for SUBSCRIBER’s use only. The cable TV and internet connection provided by FPSTIfor the SUBSCRIBER are subject to a lock-in period of three (3) years. A pre-termination fee of the equivalent in PESOS (Monthly Subscription Fee x 3 months)shall be payable by the SUBSCRIBER to FPSTI; otherwise, the billing for the monthly subscription will continue to take effect.
+        8. The Internet Modem that FPSTI assigns to SUBSCRIBER, once connected, is not transferrable. The right to use the 
+        Internet Modem shall not be leased, transferred or assigned to another person without a written consent and notification 
+        from FPSTI. The right to use the service is not transferrable. Accounts are for SUBSCRIBER’s use only. The cable TV and internet 
+        connection provided by FPSTIfor the SUBSCRIBER are subject to a lock-in period of three (3) years. A pre-termination fee of the 
+        equivalent in PESOS (Monthly Subscription Fee x 3 months)shall be payable by the SUBSCRIBER to FPSTI; otherwise, the billing for 
+        the monthly subscription will continue to take effect.
 
-            9. FPSTI shall be responsible in the maintenance and repair of its cable and fiber optic lines. The SUBSCRIBER agrees that only duly authorized employees/technicians of FPSTI shall be allowed to enter the former’s premises for ocular inspection/installation/disconnection/pull-out of equipments and/or repair purposes during the reasonable hours of the day. 
+        9. FPSTI shall be responsible in the maintenance and repair of its cable and fiber optic lines. The SUBSCRIBER agrees that 
+        only duly authorized employees/technicians of FPSTI shall be allowed to enter the former’s premises for ocular 
+        inspection/installation/disconnection/pull-out of equipments and/or repair purposes during the reasonable hours of the day. 
 
-            10. The SUBSCRIBER agrees to grant FPSTIeasement to use an existing passage forcable TV and internet connection in the interior or neighboring premises or areas. FPSTI shall be entitled free of charge to an easement over the SUBSCRIBER’s premises for the passage of repairmen, crossing or laying of cable wire, whether aerial or underground and other connection facilities.
+        10. The SUBSCRIBER agrees to grant FPSTIeasement to use an existing passage forcable TV and internet connection in the interior 
+        or neighboring premises or areas. FPSTI shall be entitled free of charge to an easement over the SUBSCRIBER’s premises for the 
+        passage of repairmen, crossing or laying of cable wire, whether aerial or underground and other connection facilities.
 
-            11. Tampering with the INTERNET MODEM is strictly prohibited. FPSTIreserves the right to immediately suspend the service, blacklist the subscriber and confiscate the INTERNET MODEM foundtampered.
+        11. Tampering with the INTERNET MODEM is strictly prohibited. FPSTIreserves the right to immediately suspend the service, blacklist 
+        the subscriber and confiscate the INTERNET MODEM foundtampered.
 
-            12. Materials, equipments and accessories charged to the SUBSCRIBER are considered as FPSTIproperty during the existence and validity of the contract and even beyond the termination thereof if the SUBSCRIBER still has an outstanding or unpaid account with FPSTI.
+        12. Materials, equipments and accessories charged to the SUBSCRIBER are considered as FPSTIproperty during the existence and validity 
+        of the contract and even beyond the termination thereof if the SUBSCRIBER still has an outstanding or unpaid account with FPSTI.
 
-            13. The SUBSCRIBER shall take full responsibility in safeguarding and preserving all properties of FPSTI, entrusted and installed within the premises of the SUBSCRIBER property until the same are officially turned over to the latter.
+        13. The SUBSCRIBER shall take full responsibility in safeguarding and preserving all properties of FPSTI, entrusted and installed 
+        within the premises of the SUBSCRIBER property until the same are officially turned over to the latter.
 
-            14. The SUBSCRIBER shall be liable and responsible for any damage to FPSTI’s property, facilities and equipment entrusted to the former, caused by the negligence, misuse and abuse by the SUBSCRIBER, except through the normal wear and tear. The SUBSCRIBER shall pay corresponding charges, if any, for the necessary repair or replacement of damaged property facilities and equipment.
+        14. The SUBSCRIBER shall be liable and responsible for any damage to FPSTI’s property, facilities and equipment entrusted to the former, 
+        caused by the negligence, misuse and abuse by the SUBSCRIBER, except through the normal wear and tear. 
+        The SUBSCRIBER shall pay corresponding charges, if any, for the necessary repair or replacement of damaged property facilities and equipment.
 
-            15. The SUBSCRIBER is aware and cognizant of the fact that FPSTI is making use of poles owned by one or more utility companies, and that, these companies have controlling interests over the utilization of such poles. Thus, the SUBSCRIBER agrees to hold FPSTIfree from any and all claims, losses or damage that the SUBSCRIBER may incur or suffer in the event that discontinuance of the use of the said poles will transpire beyond the control of FPSTI.
+        15. The SUBSCRIBER is aware and cognizant of the fact that FPSTI is making use of poles owned by one or more utility companies, and that, 
+        these companies have controlling interests over the utilization of such poles. Thus, the SUBSCRIBER agrees to hold FPSTIfree from any and 
+        all claims, losses or damage that the SUBSCRIBER may incur or suffer in the event that discontinuance of the use of the said poles will 
+        transpire beyond the control of FPSTI.
 
-            16.	FPSTI shall not be responsible for any delays, interruptions, non-service which are out of bounds of its operational limits due to power failure, acts of God, acts of nature, acts of any government or supernatural authority, war or public emergency, accident, fire, lightning, riot, strikes, lock-outs, industrial disputes and failure/breakdown of SUBSCRIBER’S owned and managed network facilities.
+        16.	FPSTI shall not be responsible for any delays, interruptions, non-service which are out of bounds of its operational limits due to power failure, 
+        acts of God, acts of nature, acts of any government or supernatural authority, war or public emergency, accident, fire, lightning, riot, strikes, 
+        lock-outs, industrial disputes and failure/breakdown of SUBSCRIBER’S owned and managed network facilities.
 
-             17. The system installed and operated by FPSTI is passive-oriented, low voltage DC-type incapable of causing any damage to the computer or television set. This system has been tested and approved by the proper government agency and its satisfactory reception is dependent on a properly functioning computer or television set to be provided and maintained by the SUBSCRIBER under his exclusive responsibility. FPSTIshall not have any responsibility whatsoever with respect to the condition, defect or performance of the SUBSCRIBER’s computer and/or television set(s) or any such other damages.
+        17. The system installed and operated by FPSTI is passive-oriented, low voltage DC-type incapable of causing any damage to the computer 
+        or television set. This system has been tested and approved by the proper government agency and its satisfactory reception is dependent 
+        on a properly functioning computer or television set to be provided and maintained by the SUBSCRIBER under his exclusive responsibility. 
+        FPSTIshall not have any responsibility whatsoever with respect to the condition, defect or performance of the SUBSCRIBER’s computer and/or 
+        television set(s) or any such other damages.
             ",
             0,
             'J'
@@ -890,17 +924,25 @@ if (isset($sheetUrls[$branch])) {
                 0,
                 5, 
                 "
-            18. FPSTI shall have the right to automatically deactivate the INTERNET MODEM in case of:
-            a.) Non-payment of one (1) month for Bundle Subscribers. (Internet and Cable), and/or effect immediate disconnection and removal of the INTERNET MODEM/ equipment/properties from the SUBSCRIBER’s premises upon non-settlement of the account FIFTEEN DAYS (15) after the grace period extended from due date;
-            b.) Violation by the SUBSCRIBER of any of the foregoing provisions of this CONTRACT, subject to FPSTI’s right to collect all the unpaid dues through the proper authority or court of jurisdiction.
+        18. FPSTI shall have the right to automatically deactivate the INTERNET MODEM in case of:
+            a.) Non-payment of one (1) month for Bundle Subscribers. (Internet and Cable), and/or effect immediate disconnection and removal of 
+            the INTERNET MODEM/ equipment/properties from the SUBSCRIBER’s premises upon non-settlement of the account FIFTEEN DAYS (15) after the 
+            grace period extended from due date;
+            b.) Violation by the SUBSCRIBER of any of the foregoing provisions of this CONTRACT, subject to FPSTI’s right to collect all the unpaid 
+            dues through the proper authority or court of jurisdiction.
 
-            19. If disconnection and discontinuation of internet services are effected by FPSTI due to default of bill payments on the part of the SUBSCRIBER, the latter may apply for reconnection and resumption of subscription services for the remainder of the present CONTRACT after satisfying the conditions for reconnection.
+        19. If disconnection and discontinuation of internet services are effected by FPSTI due to default of bill payments on the part of the SUBSCRIBER, 
+        the latter may apply for reconnection and resumption of subscription services for the remainder of the present CONTRACT after satisfying the conditions 
+        for reconnection.
 
-            20. Except by expressed written waiver, any delay, neglect or forbearance of FPSTI to require or enforce any of the provisions of this CONTRACT shall not prejudice the right of FPSTI to exercise or to act strictly afterwards in accordance with the said provisions.
+        20. Except by expressed written waiver, any delay, neglect or forbearance of FPSTI to require or enforce any of the provisions of this CONTRACT shall 
+        not prejudice the right of FPSTI to exercise or to act strictly afterwards in accordance with the said provisions.
 
-            21. Any action arising from this CONTRACT shall be filed in the appropriate Trial Court in Calbayog City to the exclusion of any court. The aggrieved party shall be entitled to attorney’s fees and collection expenses equivalent to 25% of the total amount due which in no case shall be less than Php 3,000.00.
+        21. Any action arising from this CONTRACT shall be filed in the appropriate Trial Court in Calbayog City to the exclusion of any court. The aggrieved 
+        party shall be entitled to attorney’s fees and collection expenses equivalent to 25% of the total amount due which in no case shall be less than Php 3,000.00.
 
-            22. This contract shall be enforced until terminated by FPSTI or by the SUBSCRIBER upon five-day (5) prior notice in writing with or without cause. All unpaid dues, arrears and monthly subscriptions for the period shall be settled by the latter prior to the effectivity of the termination.
+        22. This contract shall be enforced until terminated by FPSTI or by the SUBSCRIBER upon five-day (5) prior notice in writing with or without cause. 
+        All unpaid dues, arrears and monthly subscriptions for the period shall be settled by the latter prior to the effectivity of the termination.
 
             IN WITNESS THEREOF, the parties hereto have hereunto signed this contract the day of year first above-written at Bernate Compound, Brgy. Capoocan, Calbayog City, Philippines.
             ",
@@ -909,7 +951,7 @@ if (isset($sheetUrls[$branch])) {
                 false
             );
 
-            $pdf->Ln(15);
+            $pdf->Ln(10);
 
             /* ================= SIGNATURES ================= */
 
@@ -2239,54 +2281,55 @@ if (isset($sheetUrls[$branch])) {
             $pdf->SetFont('helvetica', '', 9);
 
             $declaration = "
-                1. I hereby confirm that the foregoing information is true and correct, that supporting documents attached hereto are
-                genuine and authentic, and that I voluntarily submitted the said information and documents for the purpose of facilitating my
-                application to the Service.
+            1. I hereby confirm that the foregoing information is true and correct, that supporting documents attached hereto are
+            genuine and authentic, and that I voluntarily submitted the said information and documents for the purpose of facilitating my
+            application to the Service.
 
-                2. I hereby further confirm that I applied for and, once my application is approved, that I have voluntarily availed of the
-                plans, products and/or services chosen by me in this application form, as well as the inclusions and special features of such
-                plans, products and/or services and that any enrolment I have indicated herein have been knowingly made by me.
+            2. I hereby further confirm that I applied for and, once my application is approved, that I have voluntarily availed of the
+            plans, products and/or services chosen by me in this application form, as well as the inclusions and special features of such
+            plans, products and/or services and that any enrolment I have indicated herein have been knowingly made by me.
 
-                3. I hereby authorize FIL PRODUCTS SERVICE TELEVISION OF CALBAYOG, INC. (hereinafter you) or any person or
-                entity authorized by you, to verify any information about me and/or documents available from whatever source including but
-                not limited to (i) your subsidiaries, affiliates, and/or their service providers: or (ii) banks, credit card companies, and other
-                lending and/or financial institution, and I hereby authorize the holder, controller and processor of such information and/or
-                document, has the same is defined in Republic Act No. 10173 (otherwise known as Data Privacy Act of 2012), or any
-                amendment or modification of the same, to conform, release and verify the existence, truthfulness, and/or accuracy of such
-                information and/or document.
-                
-                4. I give you permission to use, disclose and share with your business partners, subsidiaries and affiliates (and their
-                business partners) information contained in this application about me and my subscription, my network and connections, my
-                service usage and payment patterns, information about the device and equipment I use to access you service, websites
-                and app used in your services, information from your third party partners and advertisers, including any data or analytics
-                derived therefrom, in whatever form (hereinafter Personal Information), for the following purposes: processing any
-                application or request for availment of any product and/or service which they offer, improving your/ their products and
-                services, credit investigation and scoring, advertising and promoting new products and services, to the end of improving my
-                and/or the public's customer experience.
+            3. I hereby authorize FIL PRODUCTS SERVICE TELEVISION OF CALBAYOG, INC. (hereinafter you) or any person or
+            entity authorized by you, to verify any information about me and/or documents available from whatever source including but
+            not limited to (i) your subsidiaries, affiliates, and/or their service providers: or (ii) banks, credit card companies, and other
+            lending and/or financial institution, and I hereby authorize the holder, controller and processor of such information and/or
+            document, has the same is defined in Republic Act No. 10173 (otherwise known as Data Privacy Act of 2012), or any
+            amendment or modification of the same, to conform, release and verify the existence, truthfulness, and/or accuracy of such
+            information and/or document.
+            
+            4. I give you permission to use, disclose and share with your business partners, subsidiaries and affiliates (and their
+            business partners) information contained in this application about me and my subscription, my network and connections, my
+            service usage and payment patterns, information about the device and equipment I use to access you service, websites
+            and app used in your services, information from your third party partners and advertisers, including any data or analytics
+            derived therefrom, in whatever form (hereinafter Personal Information), for the following purposes: processing any
+            application or request for availment of any product and/or service which they offer, improving your/ their products and
+            services, credit investigation and scoring, advertising and promoting new products and services, to the end of improving my
+            and/or the public's customer experience.
 
-                5. I consent to your business partners', subsidiaries' and affiliates' (and their business partners') disclosure to you of any
-                Personal Information in their possession to achieve any of the purposes stated above.
+            5. I consent to your business partners', subsidiaries' and affiliates' (and their business partners') disclosure to you of any
+            Personal Information in their possession to achieve any of the purposes stated above.
 
-                6. I hereby likewise authorize you, your business partners, subsidiaries and affiliates, to send me SMS alerts or any
-                communication, advertisement or promotional material pertaining to any new or current product and/or service offered by
-                you, your business partners, subsidiaries and affiliates
+            6. I hereby likewise authorize you, your business partners, subsidiaries and affiliates, to send me SMS alerts or any
+            communication, advertisement or promotional material pertaining to any new or current product and/or service offered by
+            you, your business partners, subsidiaries and affiliates
 
-                7. I acknowledge and agree to the Holding Period for the relevant service availed of. If I choose to downgrade my plan,
-                transfer and rights or obligations of my subscription or pre-terminate or cancel my subscription within the Holding Period
-                then I agree to pay the relevant fees, charges and penalties imposed by you.
+            7. I acknowledge and agree to the Holding Period for the relevant service availed of. If I choose to downgrade my plan,
+            transfer and rights or obligations of my subscription or pre-terminate or cancel my subscription within the Holding Period
+            then I agree to pay the relevant fees, charges and penalties imposed by you.
 
-                8. I am aware of the fees, rates and charges relevant of the service availed of and I agree to pay the same within the due
-                dates. I understand that I will be subject to, and hereby agree and undertake, interest and penalties for late payment or non-payment stated in the terms and condition.
+            8. I am aware of the fees, rates and charges relevant of the service availed of and I agree to pay the same within the due
+            dates. I understand that I will be subject to, and hereby agree and undertake, interest and penalties for late payment or 
+            non-payment stated in the terms and condition.
 
-                9. I hereby confirm that I have read and understood the Terms and Conditions of our Subscription Agreement and that I
-                shall strictly comply and abide by these terms and conditions and any future amendments thereto.
+            9. I hereby confirm that I have read and understood the Terms and Conditions of our Subscription Agreement and that I
+            shall strictly comply and abide by these terms and conditions and any future amendments thereto.
 
-                10. I agree that this Subscription Agreement shall govern our relationship for the service currently availed of and the service
-                I will avail of in the future.
+            10. I agree that this Subscription Agreement shall govern our relationship for the service currently availed of and the service
+            I will avail of in the future.
 
-                11. I agree to pay my application's cancellation fee equivalent to 20% of application charges (Deposit, Installation fee and
-                equipments).
-            ";
+            11. I agree to pay my application's cancellation fee equivalent to 20% of application charges (Deposit, Installation fee and
+            equipments).
+        ";
 
             $pdf->MultiCell(0, 5, $declaration);
 
@@ -2447,51 +2490,85 @@ if (isset($sheetUrls[$branch])) {
             $branchText = $branchMap[$request->branch] ?? $request->branch;
 
             /* CONTENT */
-            $pdf->MultiCell(0,5,"
-            KNOW ALL MEN BY THESE PRESENTS:
+        $pdf->MultiCell(0,5,"
+        KNOW ALL MEN BY THESE PRESENTS:
 
-            This CONTRACT SUBSCRIPTION is made and entered into this day of {$day} of {$month}, {$year}
-            by and between FIL PRODUCTS SERVICE TELEVISION OF CALBAYOG, INC., a corporation duly organized and existing under and by virtue of Philippine laws with principal office at Bernate Compound, Brgy. Capoocan, Calbayog City, Philippines, hereinafter referred to as FPSTI:
+        This CONTRACT SUBSCRIPTION is made and entered into this day of {$day} of {$month}, {$year}
+        by and between FIL PRODUCTS SERVICE TELEVISION OF CALBAYOG, INC., a corporation duly organized and existing under and 
+        by virtue of Philippine laws with principal office at Bernate Compound, Brgy. Capoocan, Calbayog City, Philippines, hereinafter referred to as FPSTI:
 
-            AND
+                                                                AND
 
-            I {$fullName}, of legal age, and resident of {$fullAddress}, hereinafter referred to as the SUBSCRIBER.
+        I {$fullName}, of legal age, and resident of {$fullAddress}, hereinafter referred to as the SUBSCRIBER.
 
-            WITNESSETH:
+                                                            WITNESSETH:
 
-            1. FPSTI is an entity authorized by law to build and maintain satellite receiver and cable lines in {$branchText}, Samar, and provide the SUBSCRIBER with cable TV and internet connection. FPSTIshall not be held legally liable for any change, injury, or illegal acts that the subscribers might have caused in the use of the said services.
+        1. FPSTI is an entity authorized by law to build and maintain satellite receiver and cable lines in {$branchText}, Samar, 
+        and provide the SUBSCRIBER with cable TV and internet connection. FPSTIshall not be held legally liable for any change, 
+        injury, or illegal acts that the subscribers might have caused in the use of the said services.
 
-            2. does not give warranty or guarantee that the cable TV and internet connection it will provide to the subscriber will be free from interruption. 
+        2. Does not give warranty or guarantee that the cable TV and internet connection it will provide to the subscriber 
+        will be free from interruption. 
 
-            3. FPSTI exercises no control over the content of the information that would pass through FPSTI’s cable TV and internet connection facilities, thereby freeing it from any liability whatsoever in whatever form.
+        3. FPSTI exercises no control over the content of the information that would pass through FPSTI’s cable TV and internet connection 
+        facilities, thereby freeing it from any liability whatsoever in whatever form.
 
-            4. The SUBSCRIBER agrees to pay FPSTIthe one-time installation charges, one-month deposit and other applicable basic charges and fees as agreed upon by the SUBSCRIBERin the application form that is signed. All charges and fees shall be non-refundable.The one-month deposit being non-refundable may be consumed to cover the last month of this contract, or may be made part of the Pre-Termination Fee as provided in paragraph 8 hereof.
+        4. The SUBSCRIBER agrees to pay FPSTIthe one-time installation charges, one-month deposit and other applicable basic charges and 
+        fees as agreed upon by the SUBSCRIBERin the application form that is signed. All charges and fees shall be non-refundable.
+        The one-month deposit being non-refundable may be consumed to cover the last month of this contract, or may be made part of the 
+        Pre-Termination Fee as provided in paragraph 8 hereof.
 
-            5. The monthly subscription fee for the cable TV and internet connection, whether individually separate or as a package, shall become due and payable without necessity of demand or billing upon the end of each billing cycle.
+        5. The monthly subscription fee for the cable TV and internet connection, whether individually separate or as a package, 
+        shall become due and payable without necessity of demand or billing upon the end of each billing cycle.
 
-            6. FPSTI reserves the right to increase the subscription fees and other charges upon prior notice to the subscriber. The FPSTIshall notify the subscriber 15 days prior to its implementation by posting the same in all FPSTIcollection offices. 
+        6. FPSTI reserves the right to increase the subscription fees and other charges upon prior notice to the subscriber. 
+        The FPSTIshall notify the subscriber 15 days prior to its implementation by posting the same in all FPSTIcollection offices. 
 
-            7. All payment of subscription fees and charges shall be made at any FPSTI collection office or by collecting agencies authorized and accredited by FPSTI.
+        7. All payment of subscription fees and charges shall be made at any FPSTI collection office or by collecting agencies authorized 
+        and accredited by FPSTI.
 
-            8. The Internet Modem that FPSTI assigns to SUBSCRIBER, once connected, is not transferrable. The right to use the Internet Modem shall not be leased, transferred or assigned to another person without a written consent and notification from FPSTI. The right to use the service is not transferrable. Accounts are for SUBSCRIBER’s use only. The cable TV and internet connection provided by FPSTIfor the SUBSCRIBER are subject to a lock-in period of three (3) years. A pre-termination fee of the equivalent in PESOS (Monthly Subscription Fee x 3 months)shall be payable by the SUBSCRIBER to FPSTI; otherwise, the billing for the monthly subscription will continue to take effect.
+        8. The Internet Modem that FPSTI assigns to SUBSCRIBER, once connected, is not transferrable. The right to use the 
+        Internet Modem shall not be leased, transferred or assigned to another person without a written consent and notification 
+        from FPSTI. The right to use the service is not transferrable. Accounts are for SUBSCRIBER’s use only. The cable TV and internet 
+        connection provided by FPSTIfor the SUBSCRIBER are subject to a lock-in period of three (3) years. A pre-termination fee of the 
+        equivalent in PESOS (Monthly Subscription Fee x 3 months)shall be payable by the SUBSCRIBER to FPSTI; otherwise, the billing for 
+        the monthly subscription will continue to take effect.
 
-            9. FPSTI shall be responsible in the maintenance and repair of its cable and fiber optic lines. The SUBSCRIBER agrees that only duly authorized employees/technicians of FPSTI shall be allowed to enter the former’s premises for ocular inspection/installation/disconnection/pull-out of equipments and/or repair purposes during the reasonable hours of the day. 
+        9. FPSTI shall be responsible in the maintenance and repair of its cable and fiber optic lines. The SUBSCRIBER agrees that 
+        only duly authorized employees/technicians of FPSTI shall be allowed to enter the former’s premises for ocular 
+        inspection/installation/disconnection/pull-out of equipments and/or repair purposes during the reasonable hours of the day. 
 
-            10. The SUBSCRIBER agrees to grant FPSTIeasement to use an existing passage forcable TV and internet connection in the interior or neighboring premises or areas. FPSTI shall be entitled free of charge to an easement over the SUBSCRIBER’s premises for the passage of repairmen, crossing or laying of cable wire, whether aerial or underground and other connection facilities.
+        10. The SUBSCRIBER agrees to grant FPSTIeasement to use an existing passage forcable TV and internet connection in the interior 
+        or neighboring premises or areas. FPSTI shall be entitled free of charge to an easement over the SUBSCRIBER’s premises for the 
+        passage of repairmen, crossing or laying of cable wire, whether aerial or underground and other connection facilities.
 
-            11. Tampering with the INTERNET MODEM is strictly prohibited. FPSTIreserves the right to immediately suspend the service, blacklist the subscriber and confiscate the INTERNET MODEM foundtampered.
+        11. Tampering with the INTERNET MODEM is strictly prohibited. FPSTIreserves the right to immediately suspend the service, blacklist 
+        the subscriber and confiscate the INTERNET MODEM foundtampered.
 
-            12. Materials, equipments and accessories charged to the SUBSCRIBER are considered as FPSTIproperty during the existence and validity of the contract and even beyond the termination thereof if the SUBSCRIBER still has an outstanding or unpaid account with FPSTI.
+        12. Materials, equipments and accessories charged to the SUBSCRIBER are considered as FPSTIproperty during the existence and validity 
+        of the contract and even beyond the termination thereof if the SUBSCRIBER still has an outstanding or unpaid account with FPSTI.
 
-            13. The SUBSCRIBER shall take full responsibility in safeguarding and preserving all properties of FPSTI, entrusted and installed within the premises of the SUBSCRIBER property until the same are officially turned over to the latter.
+        13. The SUBSCRIBER shall take full responsibility in safeguarding and preserving all properties of FPSTI, entrusted and installed 
+        within the premises of the SUBSCRIBER property until the same are officially turned over to the latter.
 
-            14. The SUBSCRIBER shall be liable and responsible for any damage to FPSTI’s property, facilities and equipment entrusted to the former, caused by the negligence, misuse and abuse by the SUBSCRIBER, except through the normal wear and tear. The SUBSCRIBER shall pay corresponding charges, if any, for the necessary repair or replacement of damaged property facilities and equipment.
+        14. The SUBSCRIBER shall be liable and responsible for any damage to FPSTI’s property, facilities and equipment entrusted to the former, 
+        caused by the negligence, misuse and abuse by the SUBSCRIBER, except through the normal wear and tear. 
+        The SUBSCRIBER shall pay corresponding charges, if any, for the necessary repair or replacement of damaged property facilities and equipment.
 
-            15. The SUBSCRIBER is aware and cognizant of the fact that FPSTI is making use of poles owned by one or more utility companies, and that, these companies have controlling interests over the utilization of such poles. Thus, the SUBSCRIBER agrees to hold FPSTIfree from any and all claims, losses or damage that the SUBSCRIBER may incur or suffer in the event that discontinuance of the use of the said poles will transpire beyond the control of FPSTI.
+        15. The SUBSCRIBER is aware and cognizant of the fact that FPSTI is making use of poles owned by one or more utility companies, and that, 
+        these companies have controlling interests over the utilization of such poles. Thus, the SUBSCRIBER agrees to hold FPSTIfree from any and 
+        all claims, losses or damage that the SUBSCRIBER may incur or suffer in the event that discontinuance of the use of the said poles will 
+        transpire beyond the control of FPSTI.
 
-            16.	FPSTI shall not be responsible for any delays, interruptions, non-service which are out of bounds of its operational limits due to power failure, acts of God, acts of nature, acts of any government or supernatural authority, war or public emergency, accident, fire, lightning, riot, strikes, lock-outs, industrial disputes and failure/breakdown of SUBSCRIBER’S owned and managed network facilities.
+        16.	FPSTI shall not be responsible for any delays, interruptions, non-service which are out of bounds of its operational limits due to power failure, 
+        acts of God, acts of nature, acts of any government or supernatural authority, war or public emergency, accident, fire, lightning, riot, strikes, 
+        lock-outs, industrial disputes and failure/breakdown of SUBSCRIBER’S owned and managed network facilities.
 
-             17. The system installed and operated by FPSTI is passive-oriented, low voltage DC-type incapable of causing any damage to the computer or television set. This system has been tested and approved by the proper government agency and its satisfactory reception is dependent on a properly functioning computer or television set to be provided and maintained by the SUBSCRIBER under his exclusive responsibility. FPSTIshall not have any responsibility whatsoever with respect to the condition, defect or performance of the SUBSCRIBER’s computer and/or television set(s) or any such other damages.
+        17. The system installed and operated by FPSTI is passive-oriented, low voltage DC-type incapable of causing any damage to the computer 
+        or television set. This system has been tested and approved by the proper government agency and its satisfactory reception is dependent 
+        on a properly functioning computer or television set to be provided and maintained by the SUBSCRIBER under his exclusive responsibility. 
+        FPSTIshall not have any responsibility whatsoever with respect to the condition, defect or performance of the SUBSCRIBER’s computer and/or 
+        television set(s) or any such other damages.
             ",
             0,
             'J'
@@ -2501,7 +2578,7 @@ if (isset($sheetUrls[$branch])) {
             $pdf->Cell(0,5,'Page 1 of 2',0,1,'R');
 
 
-                        /* ================= PAGE 5 : CONTRACT PAGE 2 ================= */
+                       /* ================= PAGE 5 : CONTRACT PAGE 2 ================= */
             $pdf->AddPage();
 
             $pdf->SetFont('helvetica','',7.5);
@@ -2510,17 +2587,25 @@ if (isset($sheetUrls[$branch])) {
                 0,
                 5, 
                 "
-            18. FPSTI shall have the right to automatically deactivate the INTERNET MODEM in case of:
-            a.) Non-payment of one (1) month for Bundle Subscribers. (Internet and Cable), and/or effect immediate disconnection and removal of the INTERNET MODEM/ equipment/properties from the SUBSCRIBER’s premises upon non-settlement of the account FIFTEEN DAYS (15) after the grace period extended from due date;
-            b.) Violation by the SUBSCRIBER of any of the foregoing provisions of this CONTRACT, subject to FPSTI’s right to collect all the unpaid dues through the proper authority or court of jurisdiction.
+        18. FPSTI shall have the right to automatically deactivate the INTERNET MODEM in case of:
+            a.) Non-payment of one (1) month for Bundle Subscribers. (Internet and Cable), and/or effect immediate disconnection and removal of 
+            the INTERNET MODEM/ equipment/properties from the SUBSCRIBER’s premises upon non-settlement of the account FIFTEEN DAYS (15) after the 
+            grace period extended from due date;
+            b.) Violation by the SUBSCRIBER of any of the foregoing provisions of this CONTRACT, subject to FPSTI’s right to collect all the unpaid 
+            dues through the proper authority or court of jurisdiction.
 
-            19. If disconnection and discontinuation of internet services are effected by FPSTI due to default of bill payments on the part of the SUBSCRIBER, the latter may apply for reconnection and resumption of subscription services for the remainder of the present CONTRACT after satisfying the conditions for reconnection.
+        19. If disconnection and discontinuation of internet services are effected by FPSTI due to default of bill payments on the part of the SUBSCRIBER, 
+        the latter may apply for reconnection and resumption of subscription services for the remainder of the present CONTRACT after satisfying the conditions 
+        for reconnection.
 
-            20. Except by expressed written waiver, any delay, neglect or forbearance of FPSTI to require or enforce any of the provisions of this CONTRACT shall not prejudice the right of FPSTI to exercise or to act strictly afterwards in accordance with the said provisions.
+        20. Except by expressed written waiver, any delay, neglect or forbearance of FPSTI to require or enforce any of the provisions of this CONTRACT shall 
+        not prejudice the right of FPSTI to exercise or to act strictly afterwards in accordance with the said provisions.
 
-            21. Any action arising from this CONTRACT shall be filed in the appropriate Trial Court in Calbayog City to the exclusion of any court. The aggrieved party shall be entitled to attorney’s fees and collection expenses equivalent to 25% of the total amount due which in no case shall be less than Php 3,000.00.
+        21. Any action arising from this CONTRACT shall be filed in the appropriate Trial Court in Calbayog City to the exclusion of any court. The aggrieved 
+        party shall be entitled to attorney’s fees and collection expenses equivalent to 25% of the total amount due which in no case shall be less than Php 3,000.00.
 
-            22. This contract shall be enforced until terminated by FPSTI or by the SUBSCRIBER upon five-day (5) prior notice in writing with or without cause. All unpaid dues, arrears and monthly subscriptions for the period shall be settled by the latter prior to the effectivity of the termination.
+        22. This contract shall be enforced until terminated by FPSTI or by the SUBSCRIBER upon five-day (5) prior notice in writing with or without cause. 
+        All unpaid dues, arrears and monthly subscriptions for the period shall be settled by the latter prior to the effectivity of the termination.
 
             IN WITNESS THEREOF, the parties hereto have hereunto signed this contract the day of year first above-written at Bernate Compound, Brgy. Capoocan, Calbayog City, Philippines.
             ",
