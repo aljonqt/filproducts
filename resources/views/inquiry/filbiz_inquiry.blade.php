@@ -182,7 +182,7 @@ BUSINESS / FILBIZ SUBSCRIPTION
 <div class="attachment-section">
 
     <div class="section-title" style="margin-top:40px;">
-        📎 Required Document Attachments
+        Required Document Attachments
     </div>
 
     <div class="attachment-grid">
