@@ -2,7 +2,7 @@
 
 @section('content')
 
-<link rel="stylesheet" href="{{('public/css/branch.css') }}">
+<link rel="stylesheet" href="{{('css/branch.css') }}">
 
 <section class="branches">
 
