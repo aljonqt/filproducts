@@ -2905,7 +2905,7 @@ if (isset($sheetUrls[$branch])) {
             }
 
             /* ⚠️ LIMIT EXTRA FILES */
-            $maxAttachments = 2;
+            $maxAttachments = 3;
             $count = 0;
 
             if (isset($attachments) && is_array($attachments)) {
