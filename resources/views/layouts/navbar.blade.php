@@ -8,13 +8,6 @@ $inquiryRoutes = [
 
 $isInquiry = request()->routeIs($inquiryRoutes);
 
-/* ============================= */
-/* ✅ NEW: BRANCH DETECTION */
-/* ============================= */
-
-
-$isLeyte = request()->routeIs('leyte.*');
-
 /* FACEBOOK LINKS */
 $fbSamar = "https://m.me/109284174663318";
 @endphp
@@ -176,10 +169,6 @@ class="nav-btn {{ request()->routeIs('about') ? 'active' : '' }}">
 
         <a href="{{ $fbSamar }}" target="_blank" class="modal-btn" style="background:#003366;">
             📍 Fil Products Samar
-        </a>
-
-        <a href="{{ $fbLeyte }}" target="_blank" class="modal-btn" style="background:#28a745;">
-            📍 Fil Products Leyte
         </a>
 
         <button onclick="closeModal('chatModal')" class="close-btn">Cancel</button>
