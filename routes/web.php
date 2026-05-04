@@ -10,6 +10,8 @@ Route::get('/news', [PageController::class, 'news'])->name('news');
 Route::get('/complaint', [PageController::class, 'complaint'])->name('complaint');
 Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/track',[PageController::class,'track'])->name('track');
+Route::get('/branches', [PageController::class, 'branch'])->name('branch');
 
 Route::get('/residential-inquiry', [PageController::class, 'residentialInquiry'])->name('residential.inquiry');
 Route::get('/residential-upgrade', [PageController::class, 'residentialUpgrade'])->name('residential.upgrade');
@@ -40,5 +42,3 @@ Route::get('/admin/applications/residential', [AdminController::class, 'resident
 Route::get('/download-residential/{id}',[AdminController::class,'downloadResidential'])->name('download.residential');
 Route::get('/admin/applications/filbiz', [AdminController::class, 'filbiz'])->name('admin.applications.filbiz');
 Route::get('/admin/download/filbiz/{id}', [AdminController::class, 'downloadFilbiz'])->name('download.filbiz');
-Route::get('/track',[PageController::class,'track'])->name('track');
-Route::get('/branches', [PageController::class, 'branch'])->name('branch');

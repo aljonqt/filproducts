@@ -150,7 +150,7 @@ document.querySelectorAll("[data-save-signature]").forEach(btn => {
         const nameEl = document.getElementById("contract_signature_name");
 
         if (nameEl) {
-            nameEl.textContent = fullName || "_________________________";
+            nameEl.textContent = fullName || "";
         }
 
         // CLOSE MODAL
