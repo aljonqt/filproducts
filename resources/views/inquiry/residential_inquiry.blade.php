@@ -52,8 +52,6 @@
             <option value="allen">Allen</option>
             <option value="catarman">Catarman</option>
             <option value="mondragon">Mondragon</option>
-            <option value="tacloban">Tacloban</option>
-            <option value="palo">Palo</option>
         </select>
 
         <i class="fas fa-chevron-down"

@@ -123,7 +123,6 @@ class PageController extends Controller
     'Allen' => 'https://script.google.com/macros/s/AKfycbzAon6ilmqXLIfkD1tHQhmizs08DQ_rtk-aaABvyg-IcGKxLrVb8TzoNuIWYS2bn2Rv/exec',
     'Catarman' => 'https://script.google.com/macros/s/AKfycbzAon6ilmqXLIfkD1tHQhmizs08DQ_rtk-aaABvyg-IcGKxLrVb8TzoNuIWYS2bn2Rv/exec',
     'Mondragon' => 'https://script.google.com/macros/s/AKfycbzAon6ilmqXLIfkD1tHQhmizs08DQ_rtk-aaABvyg-IcGKxLrVb8TzoNuIWYS2bn2Rv/exec',
-    'Tacloban' => 'https://script.google.com/macros/s/AKfycbzAon6ilmqXLIfkD1tHQhmizs08DQ_rtk-aaABvyg-IcGKxLrVb8TzoNuIWYS2bn2Rv/exec',
 ];
 
 $branch = $request->branch;
@@ -341,16 +340,6 @@ if (isset($sheetUrls[$branch])) {
                 'name' => 'FIL PRODUCTS SERVICE TELEVISION, INC.',
                 'address' => 'BRGY ECO POBLACION, MONDRAGON, 6417 NORTHERN SAMAR',
                 'contact' => '0917-320-5871 or 0938-583-2337'
-            ],
-            'tacloban' => [
-                'name' => 'FIL PRODUCTS SERVICE TELEVISION, INC.',
-                'address' => 'CITY CENTER PARK REAL ST., BRGY ASLUM, TACLOBAN CITY',
-                'contact' => '0995-415-1821'
-            ],
-            'palo' => [
-                'name' => 'FIL PRODUCTS SERVICE TELEVISION, INC.',
-                'address' => 'CITY CENTER PARK REAL ST., BRGY ASLUM, TACLOBAN CITY',
-                'contact' => '0995-415-1821'
             ]
         ];
 
@@ -820,8 +809,6 @@ if (isset($sheetUrls[$branch])) {
                 'allen' => 'Allen',
                 'catarman' => 'Catarman',
                 'mondragon' => 'Mondragon',
-                'tacloban' => 'Tacloban City',
-                'palo' => 'Palo'
             ];
 
             $branchText = $branchMap[$request->branch] ?? $request->branch;
@@ -1106,8 +1093,6 @@ if (isset($sheetUrls[$branch])) {
             'sanjorge'   => 'filproducts.sanjorge@gmail.com',
             'catarman'   => 'csrfilproductscatarman@gmail.com',
             'catbalogan' => 'filproducts.catbalogancsr@gmail.com',
-            'tacloban'   => 'info.leyte@filproducts.ph',
-            'palo'       => 'info.leyte@filproducts.ph',
         ];
 
         /* ✅ SAFE VARIABLES & SANITIZATION */
@@ -1308,16 +1293,6 @@ if (isset($sheetUrls[$branch])) {
                 'name' => 'FIL PRODUCTS SERVICE TELEVISION, INC.',
                 'address' => 'BRGY ECO POBLACION, MONDRAGON, 6417 NORTHERN SAMAR',
                 'contact' => '0917-320-5871 or 0938-583-2337'
-            ],
-            'tacloban' => [
-                'name' => 'FIL PRODUCTS SERVICE TELEVISION, INC.',
-                'address' => 'CITY CENTER PARK REAL ST., BRGY ASLUM, TACLOBAN CITY',
-                'contact' => '0995-415-1821'
-            ],
-            'palo' => [
-                'name' => 'FIL PRODUCTS SERVICE TELEVISION, INC.',
-                'address' => 'CITY CENTER PARK REAL ST., BRGY ASLUM, TACLOBAN CITY',
-                'contact' => '0995-415-1821'
             ]
         ];
 
@@ -1727,8 +1702,6 @@ if (isset($sheetUrls[$branch])) {
             'sanjorge'   => 'filproducts.sanjorge@gmail.com',
             'catarman'   => 'csrfilproductscatarman@gmail.com',
             'catbalogan' => 'filproducts.catbalogancsr@gmail.com',
-            'tacloban'   => 'info.leyte@filproducts.ph',
-            'palo'       => 'info.leyte@filproducts.ph',
         ];
 
         /* ✅ SAFE VARIABLES & SANITIZATION */
@@ -1905,16 +1878,6 @@ if (isset($sheetUrls[$branch])) {
                 'name' => 'FIL PRODUCTS SERVICE TELEVISION, INC.',
                 'address' => 'BRGY ECO POBLACION, MONDRAGON, 6417 NORTHERN SAMAR',
                 'contact' => '0917-320-5871 or 0938-583-2337'
-            ],
-            'tacloban' => [
-                'name' => 'FIL PRODUCTS SERVICE TELEVISION, INC.',
-                'address' => 'CITY CENTER PARK REAL ST., BRGY ASLUM, TACLOBAN CITY',
-                'contact' => '0995-415-1821'
-            ],
-            'palo' => [
-                'name' => 'FIL PRODUCTS SERVICE TELEVISION, INC.',
-                'address' => 'CITY CENTER PARK REAL ST., BRGY ASLUM, TACLOBAN CITY',
-                'contact' => '0995-415-1821'
             ]
         ];
 
@@ -2482,9 +2445,7 @@ if (isset($sheetUrls[$branch])) {
                 'sanjorge' => 'San Jorge',
                 'allen' => 'Allen',
                 'catarman' => 'Catarman',
-                'mondragon' => 'Mondragon',
-                'tacloban' => 'Tacloban City',
-                'palo' => 'Palo'
+                'mondragon' => 'Mondragon'
             ];
 
             $branchText = $branchMap[$request->branch] ?? $request->branch;
@@ -2770,8 +2731,6 @@ if (isset($sheetUrls[$branch])) {
                 'sanjorge'   => 'filproducts.sanjorge@gmail.com',
                 'catarman'   => 'csrfilproductscatarman@gmail.com',
                 'catbalogan' => 'filproducts.catbalogancsr@gmail.com',
-                'tacloban'   => 'info.leyte@filproducts.ph',
-                'palo'       => 'info.leyte@filproducts.ph',
             ];
 
             /* ✅ SAFE VARIABLES & SANITIZATION */
@@ -2983,16 +2942,6 @@ if (isset($sheetUrls[$branch])) {
                 'name' => 'FIL PRODUCTS SERVICE TELEVISION, INC.',
                 'address' => 'BRGY ECO POBLACION, MONDRAGON, 6417 NORTHERN SAMAR',
                 'contact' => '0917-320-5871 or 0938-583-2337'
-            ],
-            'tacloban' => [
-                'name' => 'FIL PRODUCTS SERVICE TELEVISION, INC.',
-                'address' => 'CITY CENTER PARK REAL ST., BRGY ASLUM, TACLOBAN CITY',
-                'contact' => '0995-415-1821'
-            ],
-            'palo' => [
-                'name' => 'FIL PRODUCTS SERVICE TELEVISION, INC.',
-                'address' => 'CITY CENTER PARK REAL ST., BRGY ASLUM, TACLOBAN CITY',
-                'contact' => '0995-415-1821'
             ]
         ];
 
@@ -3413,8 +3362,6 @@ if (isset($sheetUrls[$branch])) {
                 'sanjorge'   => 'filproducts.sanjorge@gmail.com',
                 'catarman'   => 'csrfilproductscatarman@gmail.com',
                 'catbalogan' => 'filproducts.catbalogancsr@gmail.com',
-                'tacloban'   => 'info.leyte@filproducts.ph',
-                'palo'       => 'info.leyte@filproducts.ph',
             ];
 
             /* ✅ SAFE VARIABLES & SANITIZATION */

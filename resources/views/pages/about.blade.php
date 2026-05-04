@@ -15,7 +15,7 @@
 
 <h1>About Fil Products</h1>
 
-<p>Delivering reliable internet and cable television services across Eastern Visayas.</p>
+<p>Delivering reliable internet and cable television services across Samar.</p>
 
 </div>
 
@@ -24,11 +24,11 @@
 
 <div class="about-text">
 
-<h2>FIL PRODUCTS EASTERN VISAYAS.</h2>
+<h2>FIL PRODUCTS SAMAR.</h2>
 
 <p>
-Fil Products Eastern Visayas, is a trusted provider of
-high-speed internet and cable television services in Eastern Visayas. We are committed
+Fil Products Samar, is a trusted provider of
+high-speed internet and cable television services in Samar. We are committed
 to delivering reliable connectivity, modern technology, and exceptional
 customer service to homes, businesses, and communities.
 </p>
@@ -76,7 +76,7 @@ experience.
 <h3>Our Vision</h3>
 
 <p>
-To become the leading connectivity provider in Eastern Visayas by delivering
+To become the leading connectivity provider in Samar by delivering
 innovative digital services and empowering communities through technology.
 </p>
 

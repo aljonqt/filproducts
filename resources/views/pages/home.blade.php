@@ -15,7 +15,7 @@
         <div class="hero-content">
             <div class="badge-wrapper">
                 <span class="status-indicator animate-pulse"></span>
-                <span class="hero-badge">Fiber & Cable TV now live in Eastern Visayas</span>
+                <span class="hero-badge">Fiber & Cable TV now live in Samar</span>
             </div>
 
             <h1 class="hero-title">
@@ -24,7 +24,7 @@
             </h1>
 
             <p class="hero-description">
-                Unleash the full potential of your home and business with Eastern Visayas most reliable network. High-speed internet meets premium entertainment.
+                Unleash the full potential of your home and business with Samar most reliable network. High-speed internet meets premium entertainment.
             </p>
 
             <div class="hero-actions">
@@ -80,7 +80,7 @@
 
 <h2>Why Choose Fil Products?</h2>
 <p class="section-sub">
-Reliable Internet and Cable TV built for homes and businesses in Easter Visayas.
+Reliable Internet and Cable TV built for homes and businesses in Samar.
 </p>
 
 <div class="service-grid">
@@ -310,7 +310,7 @@ Affordable high-speed internet packages for every household and business.
 <h3>New Mondragon Branch Now Open</h3>
 
 <p style="color: #333;">
-Fil Products Eastern Visayas proudly announces the opening of our new branch in Mondragon,
+Fil Products Samar proudly announces the opening of our new branch in Mondragon,
 Northern Samar to better serve our growing subscribers.
 </p>
 

@@ -67,7 +67,6 @@
                     <option value="Allen">Allen</option>
                     <option value="Catarman">Catarman</option>
                     <option value="Mondragon">Mondragon</option>
-                    <option value="Tacloban">Tacloban</option>
                 </select>
             </div>
             

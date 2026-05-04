@@ -12,21 +12,17 @@ $isInquiry = request()->routeIs($inquiryRoutes);
 /* ✅ NEW: BRANCH DETECTION */
 /* ============================= */
 
-/*
-| Adjust this depending on your routes
-| Example: leyte.home, leyte.inquiry, etc.
-*/
+
 $isLeyte = request()->routeIs('leyte.*');
 
 /* FACEBOOK LINKS */
 $fbSamar = "https://m.me/109284174663318";
-$fbLeyte = "https://m.me/1045229935570610";
 @endphp
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>Fil Products Eastern Visayas</title>
+<title>Fil Products Samar</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -47,7 +43,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 <a href="{{ route('home') }}">
 <img src="{{ asset('images/fil-products-logo.png') }}" class="logo">
 </a>
-<div class="brand-label">Fil Products Eastern Visayas</div>
+<div class="brand-label">Fil Products Samar</div>
 </div>
 
 <div class="menu-toggle" onclick="toggleMenu(this)">
@@ -119,7 +115,7 @@ class="nav-btn {{ request()->routeIs('about') ? 'active' : '' }}">
     <div class="chat-header">
         <img src="{{ asset('images/fil-products-logo.png') }}">
         <div>
-            <strong>Fil Products Eastern Visayas</strong><br>
+            <strong>Fil Products Samar</strong><br>
             <small>Online now</small>
         </div>
         <span onclick="toggleChat()">✕</span>

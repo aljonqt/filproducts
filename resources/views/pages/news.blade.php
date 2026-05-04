@@ -11,7 +11,7 @@
 
 <div class="news-header">
     <h1>Latest News & Updates</h1>
-    <p>Stay updated with the latest announcements from Fil Products Eastern Visayas.</p>
+    <p>Stay updated with the latest announcements from Fil Products Samar.</p>
 </div>
 
 <div class="news-list">

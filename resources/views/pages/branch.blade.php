@@ -197,33 +197,6 @@ Open in Google Maps
 </a>
 
 </div>
-<!-- TACLOBAN -->
-
-<div class="branch-card">
-
-<h3>Tacloban Main Office</h3>
-
-<p>
-City Center Park Real St., Brgy Aslum, Tacloban City, Leyte
-</p>
-
-<p>
-📞 0995-415-1821
-</p>
-
-<div class="map">
-
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.499050152273!2d125.00001587587214!3d11.224652350764453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33087722a4ee2067%3A0x8312bbc3e15c611e!2sFil%20Products%20Leyte!5e0!3m2!1sen!2sph!4v1774924020378!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-</div>
-
-<a href="https://www.google.com/maps/place/Fil+Products+Leyte/@11.2246524,125.0000159,17z/data=!3m1!4b1!4m6!3m5!1s0x33087722a4ee2067:0x8312bbc3e15c611e!8m2!3d11.2246471!4d125.0025908!16s%2Fg%2F1hc11y2h7?hl=en&entry=ttu&g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D"
-target="_blank"
-class="map-btn">
-Open in Google Maps
-</a>
-
-</div>
 </div>
 
 </section>
