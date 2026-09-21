@@ -64,7 +64,7 @@ class ResidentialInquiryController extends Controller
 
         $branchData = $branches[$branch];
 
-        try { // <--- Unified try block starts here
+        try {
             
             /* ============================
                FULL NAME
@@ -90,7 +90,7 @@ class ResidentialInquiryController extends Controller
                SAVE TO DATABASE
             ============================ */
 
-            DB::table('residential_inquiry')->insert([
+            $inquiryId = DB::table('residential_inquiry')->insertGetId([
 
                 'branch' => $branch,
                 'salutation' => $request->salutation,
@@ -148,6 +148,20 @@ class ResidentialInquiryController extends Controller
                 'file' => $filePath,
                 'created_at' => now()
             ]);
+
+            $sequenceId = DB::table('account_sequences')
+                ->insertGetId([
+                    'created_at' => now()
+                ]);
+
+            $accountNumber = 'CYGCUS55' .
+                str_pad($sequenceId, 3, '0', STR_PAD_LEFT);
+
+            DB::table('residential_inquiry')
+                ->where('id', $inquiryId)
+                ->update([
+                    'account_number' => $accountNumber
+                ]);
 
             /* ============================
                SAVE ATTACHMENTS
@@ -260,6 +274,19 @@ class ResidentialInquiryController extends Controller
             $pdf->SetFont('helvetica','',9);
             $pdf->Cell(0,5,'Please write legibly in print all required fields below and draw location below',0,1);
             $pdf->Cell(0,5,'Date Applied: '.date('m/d/Y'),0,1);
+            $pdf->Cell(0,5,'Temporary Account Number: '.$accountNumber,0,1);
+
+            $pdf->SetTextColor(200,0,0);
+            $pdf->SetFont('helvetica','B',9);
+            $pdf->MultiCell(
+                0,
+                5,
+                'NOTE: This is a TEMPORARY ACCOUNT NUMBER issued for your One (1) Month Security Deposit. Your permanent account number will be assigned upon approval and activation of your subscription.',
+                0,
+                'L'
+            );
+            $pdf->SetTextColor(0,0,0);
+            $pdf->SetFont('helvetica','',9);
 
             $pdf->Ln(3);
 
@@ -977,7 +1004,8 @@ class ResidentialInquiryController extends Controller
             $mail->isHTML(true);
             $mail->CharSet = 'UTF-8';
 
-            $mail->Subject = "Residential Application - " . $safeFullName;
+            $mail->Subject = "Residential Application - " . $safeFullName .
+                 " | Temp Account No: " . $accountNumber;
 
             $mail->Body = '
             <div style="font-family: Arial, sans-serif; background-color: #f9fafb; padding: 20px; line-height: 1.6; color: #333;">
@@ -1002,6 +1030,14 @@ class ResidentialInquiryController extends Controller
                                 <td style="padding: 10px; border-bottom: 1px solid #f3f4f6;"><strong>' . htmlspecialchars($safeFullName) . '</strong></td>
                             </tr>
                             <tr>
+                                <td style="padding: 10px; border-bottom: 1px solid #f3f4f6;">
+                                    <strong>Temporary Account Number:</strong>
+                                </td>
+                                <td style="padding: 10px; border-bottom: 1px solid #f3f4f6; color:#003366;">
+                                    <strong>' . $accountNumber . '</strong>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td style="padding: 10px; border-bottom: 1px solid #f3f4f6;"><strong>Email Address:</strong></td>
                                 <td style="padding: 10px; border-bottom: 1px solid #f3f4f6;">' . htmlspecialchars($customerEmail) . '</td>
                             </tr>
@@ -1018,6 +1054,22 @@ class ResidentialInquiryController extends Controller
                                 <td style="padding: 10px;">' . date('F j, Y h:i A') . '</td>
                             </tr>
                         </table>
+
+                        <div style="
+                            background:#fff8e1;
+                            border-left:4px solid #f59e0b;
+                            padding:15px;
+                            margin-top:15px;
+                            font-size:14px;
+                        ">
+                            <strong>Important Notice:</strong><br>
+                            Your temporary account number is
+                            <strong>' . $accountNumber . '</strong>.
+                            This account number is intended only for processing your
+                            <strong>One (1) Month Security Deposit</strong>.
+                            A permanent account number will be issued once your application
+                            has been reviewed, approved, and activated.
+                        </div>
 
                         <div style="background-color: #f3f4f6; padding: 15px; border-left: 4px solid #003366;">
                             <strong>Note:</strong> Attached is your application PDF.
@@ -1065,12 +1117,18 @@ class ResidentialInquiryController extends Controller
                 ->route('residential.inquiry')
                 ->with('success', '
                 ✅ Your Residential Application has been successfully submitted.<br><br>
-                📧 A copy of your application has been sent to your email for your reference.<br><br>
-                Our team will review your application and contact you shortly to schedule your installation.<br><br>
-                Thank you for choosing Fil Products Samar.
+
+                🆔 Temporary Account Number:
+                <strong>'.$accountNumber.'</strong><br><br>
+
+                ⚠️ This temporary account number is for your One (1) Month Security Deposit only.<br><br>
+
+                📧 A copy of your application together with your temporary account number has been sent to your email.<br><br>
+
+                Our team will review your application and contact you shortly to schedule your installation.
                 ');
 
-        } catch (\Exception $e) { // <--- Unified catch block correctly ends here
+        } catch (\Exception $e) {
 
             return redirect()
                 ->route('residential.inquiry')

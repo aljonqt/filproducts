@@ -1,0 +1,571 @@
+body{
+    background:#f5f7fb;
+}
+
+
+/* ================= CONTAINER ================= */
+
+.technicians-container{
+
+    padding:30px;
+}
+
+
+/* ================= HEADER ================= */
+
+.technicians-header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:25px;
+}
+
+.page-title{
+
+    font-size:28px;
+    font-weight:700;
+
+    color:#000000;
+}
+
+.page-subtitle{
+
+    color:#6b7280;
+
+    margin-top:5px;
+}
+
+
+/* ================= BUTTON ================= */
+
+.create-technician-btn,
+.submit-btn{
+
+    background:#f6090f;
+
+    color:#FFFFFF;
+
+    border:none;
+    outline:none;
+
+    padding:13px 20px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    transition:0.25s ease;
+}
+
+.create-technician-btn:hover,
+.submit-btn:hover{
+
+    background:#d4060c;
+
+    transform:translateY(-2px);
+}
+
+
+/* ================= TABLE ================= */
+
+.technicians-table-container{
+
+    background:#FFFFFF;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.05);
+}
+
+.technicians-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+}
+
+.technicians-table thead{
+
+    background:#0750b4;
+
+    color:#FFFFFF;
+}
+
+.technicians-table th,
+.technicians-table td{
+
+    padding:18px;
+
+    text-align:left;
+}
+
+.technicians-table tbody tr{
+
+    border-bottom:1px solid #f1f1f1;
+}
+
+.technicians-table tbody tr:hover{
+
+    background:#f9fbff;
+}
+
+
+/* ================= STATUS ================= */
+
+.status-active{
+
+    background:#dcfce7;
+
+    color:#166534;
+
+    padding:6px 12px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:600;
+}
+
+.status-inactive{
+
+    background:#fee2e2;
+
+    color:#991b1b;
+
+    padding:6px 12px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:600;
+}
+
+
+/* ================= ACTION BUTTONS ================= */
+
+.action-buttons{
+
+    display:flex;
+    gap:10px;
+}
+
+.btn-action{
+
+    width:38px;
+    height:38px;
+
+    border:none;
+    outline:none;
+
+    border-radius:10px;
+
+    color:#FFFFFF;
+
+    cursor:pointer;
+
+    transition:0.25s ease;
+}
+
+.btn-edit{
+
+    background:#0750b4;
+}
+
+.btn-delete{
+
+    background:#f6090f;
+}
+
+.btn-action:hover{
+
+    transform:translateY(-2px);
+}
+
+
+/* ================= MODAL ================= */
+
+.technician-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:99999;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:0.3s ease;
+}
+
+/* SHOW */
+.technician-modal.show-modal{
+
+    opacity:1;
+    visibility:visible;
+}
+
+
+/* OVERLAY */
+.technician-modal-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,0.55);
+
+    backdrop-filter:blur(3px);
+}
+
+
+/* CARD */
+.technician-card{
+
+    position:relative;
+
+    width:850px;
+    max-width:95%;
+
+    background:#FFFFFF;
+
+    border-radius:24px;
+
+    padding:45px;
+
+    z-index:2;
+
+    box-shadow:0 20px 60px rgba(0,0,0,0.18);
+
+    transform:translateY(30px);
+
+    transition:0.3s ease;
+}
+
+/* ANIMATION */
+.technician-modal.show-modal .technician-card{
+
+    transform:translateY(0);
+}
+
+
+/* CLOSE BUTTON */
+.close-modal-btn{
+
+    position:absolute;
+
+    top:20px;
+    right:20px;
+
+    width:45px;
+    height:45px;
+
+    border:none;
+    outline:none;
+
+    border-radius:14px;
+
+    background:#f3f4f6;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:0.2s ease;
+}
+
+.close-modal-btn:hover{
+
+    background:#e5e7eb;
+
+    transform:rotate(90deg);
+}
+
+
+/* TITLE */
+.modal-title{
+
+    font-size:32px;
+    font-weight:700;
+
+    color:#0750b4;
+
+    margin-bottom:35px;
+}
+
+
+/* GRID */
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:28px;
+
+    margin-bottom:35px;
+}
+
+
+/* FORM GROUP */
+.form-group{
+
+    width:100%;
+}
+
+.form-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+    color:#333333;
+}
+
+
+/* INPUTS */
+.form-control{
+
+    width:100%;
+
+    padding:14px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:12px;
+
+    outline:none;
+
+    transition:0.2s ease;
+
+    font-size:15px;
+}
+
+.form-control:focus{
+
+    border-color:#0750b4;
+
+    box-shadow:0 0 0 4px rgba(7,80,180,0.1);
+}
+
+
+/* MOBILE */
+@media(max-width:768px){
+
+    .form-grid{
+
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* ================= CLOSE ================= */
+
+.close-modal-btn{
+
+    position:absolute;
+
+    top:15px;
+    right:15px;
+
+    border:none;
+    background:none;
+
+    font-size:22px;
+
+    cursor:pointer;
+}
+
+
+/* ================= DELETE MODAL ================= */
+
+.delete-modal-card{
+
+    position:relative;
+
+    width:420px;
+    max-width:95%;
+
+    background:#FFFFFF;
+
+    border-radius:22px;
+
+    padding:40px;
+
+    text-align:center;
+
+    z-index:2;
+}
+
+.delete-icon{
+
+    width:80px;
+    height:80px;
+
+    margin:auto auto 20px;
+
+    border-radius:50%;
+
+    background:#fee2e2;
+
+    color:#f6090f;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:30px;
+}
+
+.delete-actions{
+
+    margin-top:30px;
+
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+.cancel-delete-btn{
+
+    height:50px;
+
+    padding:0 25px;
+
+    border:none;
+    outline:none;
+
+    border-radius:12px;
+
+    background:#e5e7eb;
+
+    cursor:pointer;
+
+    font-weight:600;
+}
+
+.confirm-delete-btn{
+
+    height:50px;
+
+    padding:0 25px;
+
+    border:none;
+    outline:none;
+
+    border-radius:12px;
+
+    background:#f6090f;
+
+    color:#FFFFFF;
+
+    cursor:pointer;
+
+    font-weight:600;
+}
+
+
+/* ================= FORM ================= */
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:35px;
+
+    margin-top:20px;
+}
+
+.form-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+    color:#333333;
+}
+
+.form-control{
+
+    width:100%;
+
+    padding:13px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:12px;
+
+    outline:none;
+}
+
+
+/* ================= ALERT ================= */
+
+.success-alert{
+
+    background:#dcfce7;
+
+    color:#166534;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    margin-bottom:20px;
+
+    font-weight:600;
+}
+/* ================= USED SERVICES ================= */
+
+.used-services-list{
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:8px;
+}
+
+.service-badge{
+
+    background:#dbeafe;
+
+    color:#0750b4;
+
+    padding:6px 12px;
+
+    border-radius:30px;
+
+    font-size:12px;
+
+    font-weight:600;
+}
+
+.no-service-text{
+
+    color:#9ca3af;
+
+    font-size:14px;
+}

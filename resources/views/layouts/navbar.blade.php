@@ -57,22 +57,10 @@ class="nav-btn {{ request()->routeIs('news') ? 'active' : '' }}">
 <i class="fas fa-newspaper"></i> News
 </a>
 
-<div class="dropdown" id="inquiryDropdown">
-
-<div class="nav-btn dropdown-toggle {{ $isInquiry ? 'active' : '' }}"
-onclick="toggleDropdown(event,'inquiryDropdown')">
+<a href="{{ route('data.privacy') }}"
+class="nav-btn {{ request()->routeIs('data.privacy') ? 'active' : '' }}">
 <i class="fas fa-paper-plane"></i> Apply Now
-<i class="fas fa-angle-down arrow"></i>
-</div>
-
-<div class="submenu">
-<a href="{{ route('residential.inquiry') }}">Residential Application</a>
-<a href="{{ route('residential.upgrade') }}">Residential Upgrade</a>
-<a href="{{ route('filbiz.inquiry') }}">Filbiz Application</a>
-<a href="{{ route('filbiz.upgrade') }}">Filbiz Upgrade</a>
-</div>
-
-</div>
+</a>
 
 <a href="{{ route('complaint') }}"
 class="nav-btn {{ request()->routeIs('complaint') ? 'active' : '' }}">
@@ -125,9 +113,9 @@ class="nav-btn {{ request()->routeIs('about') ? 'active' : '' }}">
             <i class="fas fa-phone"></i> Call Support
         </div>
 
-        <div class="chat-option apply" onclick="openModal('applyModal')">
+        <a href="{{ route('data.privacy') }}" class="chat-option apply">
             <i class="fas fa-file-signature"></i> Apply Now
-        </div>
+        </a>
     </div>
 </div>
 
@@ -147,22 +135,6 @@ class="nav-btn {{ request()->routeIs('about') ? 'active' : '' }}">
     </div>
 </div>
 
-<div class="modal" id="applyModal">
-    <div class="modal-content">
-        <h3>Select Application Type</h3>
-
-        <a href="{{ route('residential.inquiry') }}" class="modal-btn residential">
-            🏠 Residential Plan
-        </a>
-
-        <a href="{{ route('filbiz.inquiry') }}" class="modal-btn business">
-            🏢 Business Plan
-        </a>
-
-        <button onclick="closeModal('applyModal')" class="close-btn">Cancel</button>
-    </div>
-</div>
-
 <div class="modal" id="chatModal">
     <div class="modal-content">
         <h3>Select Branch</h3>
@@ -176,56 +148,36 @@ class="nav-btn {{ request()->routeIs('about') ? 'active' : '' }}">
 </div>
 
 <script>
-// DROPDOWN
-function toggleDropdown(event, id){
-    event.stopPropagation();
 
-    document.querySelectorAll('.dropdown').forEach(d => {
-        if(d.id !== id){ d.classList.remove('open'); }
-    });
 
-    document.getElementById(id).classList.toggle('open');
-}
-
-// BURGER MENU
 function toggleMenu(el){
     const menu = document.getElementById("navMenu");
     menu.classList.toggle("open");
     el.classList.toggle("active");
 }
 
-// CLOSE MENU ONLY FOR REAL LINKS (NOT DROPDOWN TOGGLE)
-document.querySelectorAll('.nav-btn:not(.dropdown-toggle), .submenu a').forEach(link => {
+
+document.querySelectorAll('.nav-btn').forEach(link => {
     link.addEventListener('click', () => {
-        // if submenu item → close whole menu
         document.getElementById("navMenu").classList.remove("open");
+
         const toggle = document.querySelector('.menu-toggle');
-        if(toggle) toggle.classList.remove("active");
 
-        // also close dropdown
-        document.querySelectorAll('.dropdown').forEach(d => {
-            d.classList.remove('open');
-        });
+        if(toggle) {
+            toggle.classList.remove("active");
+        }
     });
 });
 
-// CLICK OUTSIDE CLOSE
-document.addEventListener('click', function(e){
-    document.querySelectorAll('.dropdown').forEach(d => {
-        if(!d.contains(e.target)){ d.classList.remove('open'); }
-    });
-});
-
-// TOGGLE CHAT (CSS Class Based Animation)
 function toggleChat(){
     let panel = document.getElementById("chat-panel");
     panel.classList.toggle("active");
 }
 
-// MODAL FUNCTIONS (CSS Class Based Animation)
+
 function openModal(id){
     document.getElementById(id).classList.add("active");
-    // Optionally close the chat widget when opening a modal
+
     document.getElementById("chat-panel").classList.remove("active");
 }
 
@@ -233,7 +185,7 @@ function closeModal(id){
     document.getElementById(id).classList.remove("active");
 }
 
-// CLOSE MODAL OUTSIDE CLICK
+
 window.onclick = function(e){
     document.querySelectorAll('.modal').forEach(modal => {
         if(e.target === modal){

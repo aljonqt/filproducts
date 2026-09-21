@@ -1,151 +1,604 @@
 import html2canvas from 'html2canvas';
 
-let map;
+let map = null;
+let locationMarker = null;
 
-/* ================= INIT MAP ================= */
+
+/* =========================================================
+   INITIALIZE MAP
+========================================================= */
 
 export function initMap() {
 
-    if (typeof L === "undefined") return null;
+    if (typeof L === 'undefined') {
+        console.error('Leaflet (L) is not available.');
+        return null;
+    }
 
-    const mapEl = document.getElementById("map");
-    if (!mapEl) return null;
+    const mapElement = document.getElementById('map');
+
+    if (!mapElement) {
+        console.warn('Map element #map not found.');
+        return null;
+    }
+
+
+    if (map) {
+        return map;
+    }
+
 
     const defaultLat = 12.0665;
     const defaultLng = 124.5965;
 
-    map = L.map('map', {
+
+    map = L.map(mapElement, {
         zoomControl: true
-    }).setView([defaultLat, defaultLng], 16);
+    }).setView(
+        [defaultLat, defaultLng],
+        16
+    );
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19
-    }).addTo(map);
 
-    // ✅ SET INITIAL COORDINATES
-    updateInputs(defaultLat, defaultLng);
+    L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap contributors',
+            crossOrigin: 'anonymous'
+        }
+    ).addTo(map);
 
-    // ✅ UPDATE COORDS WHEN MAP MOVES (DRAG UX)
-    map.on("move", () => {
+    locationMarker = L.marker(
+        [defaultLat, defaultLng],
+        {
+            draggable: true
+        }
+    ).addTo(map);
+
+
+    locationMarker.bindPopup(
+        '<strong>Your House Location</strong>'
+    );
+
+
+    updateInputs(
+        defaultLat,
+        defaultLng
+    );
+
+    map.on('moveend', () => {
+
         const center = map.getCenter();
-        updateInputs(center.lat, center.lng);
+
+        updateInputs(
+            center.lat,
+            center.lng
+        );
+
     });
 
-    // ✅ ADD CENTER MARKER (HTML OVERLAY)
-    addCenterMarker();
+
+    locationMarker.on('dragend', () => {
+
+        const position =
+            locationMarker.getLatLng();
+
+        const lat = position.lat;
+        const lng = position.lng;
+
+        updateInputs(
+            lat,
+            lng
+        );
+
+        map.setView(
+            [lat, lng],
+            map.getZoom()
+        );
+
+        locationMarker
+            .bindPopup(
+                `<strong>Your House Location</strong><br>
+                 ${lat.toFixed(6)}, ${lng.toFixed(6)}`
+            )
+            .openPopup();
+
+    });
+
+
+    map.on('click', (event) => {
+
+        const lat = event.latlng.lat;
+        const lng = event.latlng.lng;
+
+
+        locationMarker.setLatLng(
+            [lat, lng]
+        );
+
+
+        updateInputs(
+            lat,
+            lng
+        );
+
+
+        locationMarker
+            .bindPopup(
+                `<strong>Your House Location</strong><br>
+                 ${lat.toFixed(6)}, ${lng.toFixed(6)}`
+            )
+            .openPopup();
+
+    });
+
 
     return map;
 }
 
-/* ================= CENTER MARKER ================= */
 
-function addCenterMarker() {
-
-    const mapContainer = document.getElementById("map");
-
-    // remove old if exists
-    const existing = document.getElementById("centerMarker");
-    if (existing) existing.remove();
-
-    const marker = document.createElement("div");
-    marker.id = "centerMarker";
-
-    marker.style.position = "absolute";
-    marker.style.top = "50%";
-    marker.style.left = "50%";
-    marker.style.transform = "translate(-50%, -100%)"; // tip points center
-    marker.style.zIndex = "999";
-
-    marker.innerHTML = `
-        <div style="
-            width: 24px;
-            height: 24px;
-            background: #e53935;
-            border-radius: 50% 50% 50% 0;
-            transform: rotate(-45deg);
-            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-            position: relative;
-        ">
-            <div style="
-                width: 10px;
-                height: 10px;
-                background: white;
-                border-radius: 50%;
-                position: absolute;
-                top: 7px;
-                left: 7px;
-            "></div>
-        </div>
-    `;
-
-    mapContainer.appendChild(marker);
-}
-
-/* ================= UPDATE LAT LNG ================= */
+/* =========================================================
+   UPDATE LATITUDE / LONGITUDE
+========================================================= */
 
 function updateInputs(lat, lng) {
-    const latInput = document.getElementById("latitude");
-    const lngInput = document.getElementById("longitude");
 
-    if (latInput) latInput.value = lat;
-    if (lngInput) lngInput.value = lng;
+    const latitudeInput =
+        document.getElementById('latitude');
+
+    const longitudeInput =
+        document.getElementById('longitude');
+
+
+    if (latitudeInput) {
+        latitudeInput.value = lat.toFixed(6);
+    }
+
+
+    if (longitudeInput) {
+        longitudeInput.value = lng.toFixed(6);
+    }
+
 }
 
-/* ================= AUTO LOCATION ================= */
+
+/* =========================================================
+   GET USER LOCATION
+========================================================= */
 
 export function getUserLocation() {
 
-    if (!navigator.geolocation || !map) {
-        alert("Geolocation not supported.");
+    if (!navigator.geolocation) {
+
+        alert(
+            'Geolocation is not supported by your browser.'
+        );
+
         return;
     }
 
+
+    if (!map) {
+
+        console.warn(
+            'Map is not initialized.'
+        );
+
+        return;
+    }
+
+
     navigator.geolocation.getCurrentPosition(
 
-        // ✅ SUCCESS
-        (pos) => {
-            const lat = pos.coords.latitude;
-            const lng = pos.coords.longitude;
 
-            map.setView([lat, lng], 17);
-            updateInputs(lat, lng);
+        (position) => {
+
+            const lat =
+                position.coords.latitude;
+
+            const lng =
+                position.coords.longitude;
+
+            map.setView(
+                [lat, lng],
+                17
+            );
+
+
+            if (locationMarker) {
+
+                locationMarker.setLatLng(
+                    [lat, lng]
+                );
+
+
+                locationMarker
+                    .bindPopup(
+                        `<strong>Your House Location</strong><br>
+                         ${lat.toFixed(6)}, ${lng.toFixed(6)}`
+                    )
+                    .openPopup();
+
+            }
+
+
+            updateInputs(
+                lat,
+                lng
+            );
+
         },
 
-        // ❌ ERROR
-        (err) => {
-            if (err.code === 1) alert("Permission denied.");
-            else if (err.code === 2) alert("Location unavailable.");
-            else if (err.code === 3) alert("Timeout.");
-            else alert("Error getting location.");
+
+        (error) => {
+
+            switch (error.code) {
+
+                case error.PERMISSION_DENIED:
+
+                    alert(
+                        'Location permission was denied.'
+                    );
+
+                    break;
+
+
+                case error.POSITION_UNAVAILABLE:
+
+                    alert(
+                        'Location is unavailable.'
+                    );
+
+                    break;
+
+
+                case error.TIMEOUT:
+
+                    alert(
+                        'Location request timed out.'
+                    );
+
+                    break;
+
+
+                default:
+
+                    alert(
+                        'Unable to get your location.'
+                    );
+
+            }
+
         },
+
 
         {
             enableHighAccuracy: true,
-            timeout: 10000
+            timeout: 10000,
+            maximumAge: 0
         }
+
     );
+
 }
+/* =========================================================
+   CAPTURE MAP
+========================================================= */
 
-/* ================= CAPTURE MAP ================= */
+export async function captureMap(mapInstance) {
 
-export function captureMap(mapInstance) {
+    if (!mapInstance) {
+        throw new Error('Map is not initialized.');
+    }
 
-    return new Promise((resolve) => {
 
-        mapInstance.whenReady(() => {
+    const mapElement =
+        document.getElementById('map');
 
-            setTimeout(() => {
 
-                html2canvas(document.querySelector("#map"), {
-                    useCORS: true,
-                    scale: 2
-                }).then(canvas => {
-                    resolve(canvas.toDataURL("image/png"));
-                });
+    if (!mapElement) {
+        throw new Error('Map element #map not found.');
+    }
 
-            }, 500);
+
+    /* =====================================================
+       FIND MAP STEP
+    ===================================================== */
+
+    const mapStep =
+        mapElement.closest('.form-step');
+
+
+    /* =====================================================
+       SAVE ORIGINAL DISPLAY STATES
+    ===================================================== */
+
+    const originalMapStepDisplay =
+        mapStep
+            ? mapStep.style.display
+            : '';
+
+
+    const originalMapDisplay =
+        mapElement.style.display;
+
+
+    const originalMapVisibility =
+        mapElement.style.visibility;
+
+
+    const originalMapPosition =
+        mapElement.style.position;
+
+
+    /* =====================================================
+       TEMPORARILY SHOW MAP
+    ===================================================== */
+
+    if (mapStep) {
+
+        mapStep.style.display = 'block';
+
+    }
+
+
+    mapElement.style.display = 'block';
+    mapElement.style.visibility = 'visible';
+    mapElement.style.position = 'relative';
+
+
+    /* =====================================================
+       WAIT FOR BROWSER LAYOUT
+    ===================================================== */
+
+    await new Promise(resolve => {
+
+        requestAnimationFrame(() => {
+
+            requestAnimationFrame(resolve);
 
         });
 
     });
+
+
+    /* =====================================================
+       REFRESH LEAFLET SIZE
+    ===================================================== */
+
+    mapInstance.invalidateSize(true);
+
+
+    /* =====================================================
+       WAIT FOR LEAFLET
+    ===================================================== */
+
+    await new Promise(resolve =>
+        setTimeout(resolve, 500)
+    );
+
+
+    /* =====================================================
+       CHECK MAP DIMENSIONS
+    ===================================================== */
+
+    const mapWidth =
+        mapElement.offsetWidth;
+
+
+    const mapHeight =
+        mapElement.offsetHeight;
+
+
+    console.log(
+        'Map dimensions before capture:',
+        mapWidth,
+        'x',
+        mapHeight
+    );
+
+
+    if (
+        mapWidth <= 0 ||
+        mapHeight <= 0
+    ) {
+
+        if (mapStep) {
+            mapStep.style.display =
+                originalMapStepDisplay;
+        }
+
+        mapElement.style.display =
+            originalMapDisplay;
+
+        mapElement.style.visibility =
+            originalMapVisibility;
+
+        mapElement.style.position =
+            originalMapPosition;
+
+
+        throw new Error(
+            `Map has invalid dimensions: ${mapWidth}x${mapHeight}`
+        );
+
+    }
+
+
+    /* =====================================================
+       CAPTURE
+    ===================================================== */
+
+    let canvas;
+
+
+    try {
+
+        canvas =
+            await html2canvas(
+                mapElement,
+                {
+                    useCORS: true,
+
+                    allowTaint: false,
+
+                    scale: 2,
+
+                    backgroundColor: '#ffffff',
+
+                    logging: false,
+
+                    imageTimeout: 15000,
+
+                    removeContainer: true,
+
+                    foreignObjectRendering: false
+                }
+            );
+
+    }
+    catch (error) {
+
+        console.error(
+            'html2canvas error:',
+            error
+        );
+
+        throw error;
+
+    }
+
+
+    /* =====================================================
+       VALIDATE CANVAS
+    ===================================================== */
+
+    if (
+        !canvas ||
+        !canvas.width ||
+        !canvas.height
+    ) {
+
+        throw new Error(
+            `Map capture produced an invalid canvas: ${
+                canvas
+                    ? `${canvas.width}x${canvas.height}`
+                    : 'no canvas'
+            }`
+        );
+
+    }
+
+
+    console.log(
+        'Canvas generated successfully:',
+        canvas.width,
+        'x',
+        canvas.height
+    );
+
+
+    /* =====================================================
+       CONVERT TO PNG
+    ===================================================== */
+
+    let dataUrl;
+
+
+    try {
+
+        dataUrl =
+            canvas.toDataURL(
+                'image/png'
+            );
+
+    }
+    catch (error) {
+
+        console.error(
+            'Canvas export error:',
+            error
+        );
+
+        throw new Error(
+            'Unable to export map canvas: ' +
+            error.message
+        );
+
+    }
+
+
+    /* =====================================================
+       VALIDATE DATA URL
+    ===================================================== */
+
+    if (
+        !dataUrl ||
+        !dataUrl.startsWith(
+            'data:image/png'
+        )
+    ) {
+
+        throw new Error(
+            'Map capture produced an invalid PNG image.'
+        );
+
+    }
+
+
+    console.log(
+        'Map captured successfully.'
+    );
+
+
+    /* =====================================================
+       RESTORE ORIGINAL MAP STATE
+    ===================================================== */
+
+    if (mapStep) {
+
+        mapStep.style.display =
+            originalMapStepDisplay;
+
+    }
+
+
+    mapElement.style.display =
+        originalMapDisplay;
+
+
+    mapElement.style.visibility =
+        originalMapVisibility;
+
+
+    mapElement.style.position =
+        originalMapPosition;
+
+
+    /* =====================================================
+       RETURN IMAGE
+    ===================================================== */
+
+    return dataUrl;
+}
+
+
+/* =========================================================
+   REFRESH MAP SIZE
+========================================================= */
+
+export function refreshMap() {
+
+    if (!map) {
+        return;
+    }
+
+
+    setTimeout(() => {
+
+        map.invalidateSize();
+
+    }, 100);
+
 }

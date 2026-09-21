@@ -414,3 +414,289 @@ body {
 }
 
 .close-btn:hover { background: #bbb; }
+
+/* =========================================================
+   DATA PRIVACY MODAL
+   ========================================================= */
+
+#privacyModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(5px);
+
+    padding: 20px;
+}
+
+#privacyModal.active {
+    display: flex;
+}
+
+/* PRIVACY MODAL BOX */
+#privacyModal .privacy-modal {
+    width: min(1100px, 94vw) !important;
+    height: min(88vh, 900px) !important;
+
+    max-width: none !important;
+    max-height: none !important;
+
+    background: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 !important;
+    margin: 0;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.privacy-header {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 22px 32px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.privacy-header h2 {
+    margin: 0;
+
+    color: #003366;
+
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.privacy-close {
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    background: #f1f1f1;
+
+    border-radius: 50%;
+
+    font-size: 25px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    color: #555;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.2s;
+}
+
+.privacy-close:hover {
+    background: #e3e3e3;
+    color: #003366;
+}
+
+/* =========================================================
+   PRIVACY CONTENT
+   ========================================================= */
+
+.privacy-body {
+    flex: 1;
+
+    min-height: 0;
+
+    padding: 35px 45px;
+
+    overflow-y: auto;
+
+    color: #444;
+
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* HEADINGS INSIDE PRIVACY */
+.privacy-body h3 {
+    color: #003366;
+
+    font-size: 19px;
+
+    margin-top: 28px;
+    margin-bottom: 12px;
+
+    font-weight: 700;
+}
+
+.privacy-body h3:first-child {
+    margin-top: 0;
+}
+
+.privacy-body p {
+    margin-bottom: 18px;
+}
+
+.privacy-body strong {
+    color: #003366;
+}
+
+/* CUSTOM SCROLLBAR */
+.privacy-body::-webkit-scrollbar {
+    width: 10px;
+}
+
+.privacy-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.privacy-body::-webkit-scrollbar-thumb {
+    background: #003366;
+    border-radius: 10px;
+}
+
+.privacy-body::-webkit-scrollbar-thumb:hover {
+    background: #002244;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.privacy-footer {
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 18px 32px;
+
+    background: #f8f9fa;
+
+    border-top: 1px solid #ddd;
+}
+
+/* DECLINE BUTTON */
+.privacy-decline {
+    border: 1px solid #ccc;
+
+    background: #ffffff;
+
+    color: #666;
+
+    padding: 13px 25px;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.privacy-decline:hover {
+    background: #eeeeee;
+}
+
+/* AGREE BUTTON */
+.privacy-agree {
+    border: none;
+
+    background: #003366;
+    color: white;
+
+    padding: 14px 30px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    min-width: 220px;
+
+    transition: 0.2s;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.privacy-agree:hover {
+    background: #002244;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 5px 15px rgba(0, 51, 102, 0.25);
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    #privacyModal {
+        padding: 10px;
+    }
+
+    #privacyModal .privacy-modal {
+        width: 96vw !important;
+        height: 92vh !important;
+
+        border-radius: 14px;
+    }
+
+    .privacy-header {
+        padding: 18px 20px;
+    }
+
+    .privacy-header h2 {
+        font-size: 22px;
+    }
+
+    .privacy-body {
+        padding: 25px 22px;
+
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .privacy-footer {
+        padding: 14px 18px;
+
+        flex-direction: column-reverse;
+
+        gap: 10px;
+    }
+
+    .privacy-agree,
+    .privacy-decline {
+        width: 100%;
+    }
+}

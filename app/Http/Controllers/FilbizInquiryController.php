@@ -115,7 +115,7 @@ class FilbizInquiryController extends Controller
            SAVE TO DATABASE
         ========================== */
 
-        DB::table('filbiz_inquiry')->insert([
+        $inquiryId = DB::table('filbiz_inquiry')->insertGetId([
 
             'branch' => $branch,
             'company_name' => $companyName,
@@ -141,7 +141,19 @@ class FilbizInquiryController extends Controller
             'valid_id' => $validIdPath,
         ]);
 
+        $sequenceId = DB::table('account_sequences')
+                ->insertGetId([
+                    'created_at' => now()
+                ]);
 
+            $accountNumber = 'CYGCUS55' .
+                str_pad($sequenceId, 3, '0', STR_PAD_LEFT);
+
+            DB::table('filbiz_inquiry')
+                ->where('id', $inquiryId)
+                ->update([
+                    'account_number' => $accountNumber
+                ]);
 
         /* =========================
                GENERATE PDF
@@ -174,7 +186,7 @@ class FilbizInquiryController extends Controller
 
         $pdf->Ln(15);
 
-        /* ================= TITLE ================= */
+
 
         /* ================= TITLE ================= */
 
@@ -185,8 +197,21 @@ class FilbizInquiryController extends Controller
         $pdf->SetFont('helvetica','',10);
         $pdf->SetTextColor(0,0,0); // ✅ ADDS THIS: Resets text back to BLACK
         $pdf->Cell(0,6,'Date Applied: '.date('F d, Y'),0,1);
-        
-        $pdf->Ln(5);
+            $pdf->Cell(0,5,'Temporary Account Number: '.$accountNumber,0,1);
+
+            $pdf->SetTextColor(200,0,0);
+            $pdf->SetFont('helvetica','B',9);
+            $pdf->MultiCell(
+                0,
+                5,
+                'NOTE: This is a TEMPORARY ACCOUNT NUMBER issued for your One (1) Month Security Deposit. Your permanent account number will be assigned upon approval and activation of your subscription.',
+                0,
+                'L'
+            );
+            $pdf->SetTextColor(0,0,0);
+            $pdf->SetFont('helvetica','',9);
+
+            $pdf->Ln(3);
 
         /* ================= COMPANY INFO ================= */
 
@@ -896,11 +921,35 @@ class FilbizInquiryController extends Controller
                         
                         <table style='width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 14px;'>
                             <tr><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #6b7280; width: 35%;'><strong>Company Name:</strong></td><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #111827;'><strong>{$safeCompany}</strong></td></tr>
+                            <tr>
+                                <td style='padding: 10px; border-bottom: 1px solid #f3f4f6;'>
+                                    <strong>Temporary Account Number:</strong>
+                                </td>
+                                <td style='padding: 10px; border-bottom: 1px solid #f3f4f6; color:#003366;'>
+                                    <strong>$accountNumber</strong>
+                                </td>
+                            </tr>
                             <tr><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #6b7280;'><strong>Applicant Name:</strong></td><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #111827;'>{$safeFirstName} {$safeLastName}</td></tr>
                             <tr><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #6b7280;'><strong>Email Address:</strong></td><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #111827;'>{$safeEmail}</td></tr>
                             <tr><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #6b7280;'><strong>Selected Branch:</strong></td><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #111827;'>{$branch}</td></tr>
                             <tr><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #6b7280;'><strong>Subscription Plan:</strong></td><td style='padding: 10px 0; border-bottom: 1px solid #f3f4f6; color: #111827; font-weight: bold; color: #003366;'>{$safePlan}</td></tr>
                         </table>
+
+                        <div style='
+                            background:#fff8e1;
+                            border-left:4px solid #f59e0b;
+                            padding:15px;
+                            margin-top:15px;
+                            font-size:14px;
+                        '>
+                            <strong>Important Notice:</strong><br>
+                            Your temporary account number is
+                            <strong>' . $accountNumber . '</strong>.
+                            This account number is intended only for processing your
+                            <strong>One (1) Month Security Deposit</strong>.
+                            A permanent account number will be issued once your application
+                            has been reviewed, approved, and activated.
+                        </div>
 
                         <div style='background-color: #f3f4f6; padding: 15px; border-left: 4px solid #003366; border-radius: 4px; color: #4b5563; font-size: 13px;'>
                             <strong>Note:</strong> Attached to this email are the PDF application form and the uploaded supporting documents (Business Permit, DTI/SEC, Valid ID) provided during submission.
@@ -955,11 +1004,17 @@ class FilbizInquiryController extends Controller
 
         return redirect()
             ->route('filbiz.inquiry')
-            ->with('success', '
-            ✅ Your Filbiz Application has been successfully submitted.
-            📧 A copy of your application form and attachments has been sent to your email.
-            Our Fil Products team will review your application and contact you shortly for the next steps.
-            ');
+            ->with('success','
+                ✅ Your Filbiz Application has been successfully submitted.
+
+                🆔 Temporary Account Number:'.$accountNumber.'
+
+                ⚠️ This temporary account number is for your One (1) Month Security Deposit only.
+
+                📧 A copy of your application together with your temporary account number has been sent to your email.
+
+                Our team will review your application and contact you shortly to schedule your installation.
+                ');
 
     }
 }
