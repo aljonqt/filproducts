@@ -1,4 +1,3 @@
-console.log('🔥 RESIDENTIAL JS IS LOADING');
 import {
     initSignaturePad,
     initSignatureModal
@@ -10,7 +9,6 @@ import {
 
 import {
     initMap,
-    captureMap,
     getUserLocation
 } from '../components/map';
 
@@ -21,8 +19,6 @@ import {
 import {
     initFormValidation
 } from '../components/form';
-
-console.log('🔥 RESIDENTIAL IMPORTS FINISHED');
 
 
 /* =========================================================
@@ -195,40 +191,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         /* ---------------------------------------------
-           CAPTURE MAP
+        SUBMIT WITHOUT MAP SCREENSHOT
         --------------------------------------------- */
-
-        if (!residentialMap) {
-            return;
-        }
-
 
         event.preventDefault();
 
+        const mapInput =
+            document.getElementById('mapImage');
 
-        try {
-
-            const image = await captureMap(residentialMap);
-            const mapInput = document.getElementById('mapImage');
-
-            if (mapInput) {
-                mapInput.value = image; // only reached if captureMap resolved with a valid image
-            }
-
-            form.submit();
-
-        } catch (error) {
-
-            console.error('Unable to capture map:', error);
-
-            const mapInput = document.getElementById('mapImage');
-            if (mapInput) {
-                mapInput.value = ''; // explicitly empty, not stale/partial data
-            }
-
-            form.submit();
-
+        if (mapInput) {
+            mapInput.value = '';
         }
+
+        form.submit();
 
     });
 

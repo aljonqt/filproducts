@@ -5,7 +5,6 @@ import {
 
 import {
     initMap,
-    captureMap,
     getUserLocation,
     refreshMap
 } from '../components/map.js';
@@ -1432,35 +1431,16 @@ if (mapInstance) {
             CAPTURE MAP
             --------------------------------------------- */
 
-            const image =
-                await captureMap(
-                    mapInstance
-                );
+        const mapInput =
+            document.getElementById(
+                'mapImage'
+            );
 
+        if (mapInput) {
+            mapInput.value = '';
+        }
 
-            /* ---------------------------------------------
-            SAVE MAP IMAGE
-            --------------------------------------------- */
-
-            const mapInput =
-                document.getElementById(
-                    'mapImage'
-                );
-
-
-            if (mapInput) {
-
-                mapInput.value =
-                    image;
-
-            }
-
-
-            /* ---------------------------------------------
-            SUBMIT
-            --------------------------------------------- */
-
-            submitForm();
+        submitForm();
 
         }
         catch (error) {
