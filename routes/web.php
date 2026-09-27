@@ -32,7 +32,7 @@ Route::get('/data-privacy', function () { return view('inquiry.data-privacy'); }
 
 Route::get('/application-type', function () {return view('inquiry.application-type'); })->name('application.type');
 
-
+Route::get('/maintenance', function () { return view('inquiry.maintenance'); })->name('maintenance');
 /*
 |--------------------------------------------------------------------------
 | RESIDENTIAL

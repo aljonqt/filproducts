@@ -330,7 +330,7 @@
             <!-- BUSINESS -->
 
             <a
-                href="{{ route('filbiz.inquiry') }}"
+                href="{{ route('maintenance') }}"
                 class="application-card"
             >
 

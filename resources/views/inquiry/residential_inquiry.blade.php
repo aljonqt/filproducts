@@ -3480,7 +3480,6 @@ showStep(1);
 </div>
 
 
->>>>>>> c28d1ae (new web update with the application new feature)
 @include('layouts.footer')
 
 @endsection

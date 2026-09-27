@@ -29,11 +29,11 @@
 
             <div class="hero-actions">
                 <div class="button-group">
-                    <a href="{{ route('residential.inquiry') }}" class="btn btn-primary">
+                    <a href="{{ route('data.privacy') }}" class="btn btn-primary">
                         <i class="fas fa-home"></i> 
                         <span>For Home</span>
                     </a>
-                    <a href="{{ route('filbiz.inquiry') }}" class="btn btn-secondary">
+                    <a href="{{ route('data.privacy') }}" class="btn btn-secondary">
                         <i class="fas fa-building"></i> 
                         <span>For Business</span>
                     </a>
@@ -136,7 +136,7 @@ Affordable high-speed internet packages for every household and business.
 <li>Unlimited Internet</li>
 <li>Free Cable TV</li>
 </ul>
-<a href="{{ route('residential.inquiry') }}" class="plan-btn">Apply Now</a>
+<a href="{{ route('data.privacy') }}" class="plan-btn">Apply Now</a>
 </div>
 
 <div class="package">
@@ -147,7 +147,7 @@ Affordable high-speed internet packages for every household and business.
 <li>Unlimited Internet</li>
 <li>Free Cable TV</li>
 </ul>
-<a href="{{ route('residential.inquiry') }}" class="plan-btn">Apply Now</a>
+<a href="{{ route('data.privacy') }}" class="plan-btn">Apply Now</a>
 </div>
 
 <div class="package">
@@ -158,7 +158,7 @@ Affordable high-speed internet packages for every household and business.
 <li>Unlimited Internet</li>
 <li>Free Cable TV</li>
 </ul>
-<a href="{{ route('residential.inquiry') }}" class="plan-btn">Apply Now</a>
+<a href="{{ route('data.privacy') }}" class="plan-btn">Apply Now</a>
 </div>
 
 </div>
@@ -173,7 +173,7 @@ Affordable high-speed internet packages for every household and business.
 <li>Unlimited Internet</li>
 <li>Free Cable TV</li>
 </ul>
-<a href="{{ route('residential.inquiry') }}" class="plan-btn">Apply Now</a>
+<a href="{{ route('data.privacy') }}" class="plan-btn">Apply Now</a>
 </div>
 
 <div class="package">
@@ -184,7 +184,7 @@ Affordable high-speed internet packages for every household and business.
 <li>Unlimited Internet</li>
 <li>Free Cable TV</li>
 </ul>
-<a href="{{ route('residential.inquiry') }}" class="plan-btn">Apply Now</a>
+<a href="{{ route('data.privacy') }}" class="plan-btn">Apply Now</a>
 </div>
 
 <div class="package">
@@ -195,7 +195,7 @@ Affordable high-speed internet packages for every household and business.
 <li>Unlimited Internet</li>
 <li>Free Cable TV</li>
 </ul>
-<a href="{{ route('residential.inquiry') }}" class="plan-btn">Apply Now</a>
+<a href="{{ route('data.privacy') }}" class="plan-btn">Apply Now</a>
 </div>
 
 </div>
@@ -214,7 +214,7 @@ Affordable high-speed internet packages for every household and business.
 <li>Business Ready</li>
 <li>Priority Support</li>
 </ul>
-<a href="{{ route('filbiz.inquiry') }}" class="plan-btn">Apply Now</a>
+<a href="{{ route('data.privacy') }}" class="plan-btn">Apply Now</a>
 </div>
 
 <div class="package">
@@ -226,7 +226,7 @@ Affordable high-speed internet packages for every household and business.
 <li>Business Ready</li>
 <li>Priority Support</li>
 </ul>
-<a href="{{ route('filbiz.inquiry') }}" class="plan-btn">Apply Now</a>
+<a href="{{ route('data.privacy') }}" class="plan-btn">Apply Now</a>
 </div>
 
 <div class="package">
@@ -238,7 +238,7 @@ Affordable high-speed internet packages for every household and business.
 <li>Business Ready</li>
 <li>Priority Support</li>
 </ul>
-<a href="{{ route('filbiz.inquiry') }}" class="plan-btn">Apply Now</a>
+<a href="{{ route('data.privacy') }}" class="plan-btn">Apply Now</a>
 </div>
 
 <div class="package">
@@ -250,7 +250,7 @@ Affordable high-speed internet packages for every household and business.
 <li>Business Ready</li>
 <li>Priority Support</li>
 </ul>
-<a href="{{ route('filbiz.inquiry') }}" class="plan-btn">Apply Now</a>
+<a href="{{ route('data.privacy') }}" class="plan-btn">Apply Now</a>
 </div>
 
 </div>
