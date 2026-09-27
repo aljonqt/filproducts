@@ -2066,6 +2066,7 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
         </div>
 
     </div>
+<<<<<<< HEAD
 
 </div>
 
@@ -3474,6 +3475,12 @@ showStep(1);
 
 </script>
 
+=======
+
+</div>
+
+
+>>>>>>> c28d1ae (new web update with the application new feature)
 @include('layouts.footer')
 
 @endsection
