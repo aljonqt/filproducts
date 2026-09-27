@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-<!-- HERO -->
 
 <section class="hero-section">
     <div class="glow-blob"></div>
