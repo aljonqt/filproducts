@@ -59,6 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const totalSteps = 7;
 
+    let isSubmitting = false;
+
 
     /* =====================================================
        ELEMENTS
@@ -1282,9 +1284,10 @@ document.addEventListener('DOMContentLoaded', () => {
         'submit',
         async event => {
 
-            /*
-             * Only submit from final step.
-             */
+            if (isSubmitting) {
+            event.preventDefault();
+            return;
+        }
             if (currentStep !== totalSteps) {
 
                 event.preventDefault();
@@ -1466,26 +1469,26 @@ if (mapInstance) {
        SUBMIT FORM
     ===================================================== */
 
-    function submitForm() {
+        function submitForm() {
 
-        if (submitBtn) {
+            if (isSubmitting) {
+                return;
+            }
 
-            submitBtn.disabled =
-                true;
+            isSubmitting = true;
 
+            if (submitBtn) {
 
-            submitBtn.innerHTML = `
-                <i class="fas fa-spinner fa-spin"></i>
-                Submitting...
-            `;
+                submitBtn.disabled = true;
 
+                submitBtn.innerHTML = `
+                    <i class="fas fa-spinner fa-spin"></i>
+                    Submitting...
+                `;
+            }
+
+            HTMLFormElement.prototype.submit.call(form);
         }
-
-        HTMLFormElement.prototype.submit.call(
-            form
-        );
-
-    }
 
 
     /* =====================================================

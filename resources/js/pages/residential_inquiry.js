@@ -86,6 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    const submitBtn =
+    document.getElementById('submitBtn');
+
+    let isSubmitting = false;
+
 
     /* =====================================================
        MAP
@@ -139,6 +144,11 @@ document.addEventListener('DOMContentLoaded', () => {
     ===================================================== */
 
     form.addEventListener('submit', async (event) => {
+
+        if (isSubmitting) {
+            event.preventDefault();
+            return;
+        }
 
         const declaration =
             document.getElementById('declarationCheck');
@@ -203,7 +213,29 @@ document.addEventListener('DOMContentLoaded', () => {
             mapInput.value = '';
         }
 
-        form.submit();
+
+        /* ---------------------------------------------
+        SUBMITTING STATE
+        --------------------------------------------- */
+
+        isSubmitting = true;
+
+        if (submitBtn) {
+
+            submitBtn.disabled = true;
+
+            submitBtn.innerHTML = `
+                <i class="fas fa-spinner fa-spin"></i>
+                Submitting...
+            `;
+        }
+
+
+        /* ---------------------------------------------
+        ACTUAL SUBMISSION
+        --------------------------------------------- */
+
+        HTMLFormElement.prototype.submit.call(form);
 
     });
 
