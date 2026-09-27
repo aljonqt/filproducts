@@ -275,18 +275,23 @@
             </button>
 
 
-            <button
-                type="button"
-                id="privacyAgreeBtn"
-                class="privacy-agree-btn"
-                disabled
+            <form
+                id="privacyAcceptForm"
+                action="{{ route('data.privacy.accept') }}"
+                method="POST"
             >
+                @csrf
 
-                I Agree &amp; Proceed
-
-                <i class="fas fa-arrow-right"></i>
-
-            </button>
+                <button
+                    type="submit"
+                    id="privacyAgreeBtn"
+                    class="privacy-agree-btn"
+                    disabled
+                >
+                    I Agree &amp; Proceed
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
 
         </div>
 
@@ -662,6 +667,79 @@
 
 }
 
+.data-privacy-modal-footer form {
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+}
+
+
+.privacy-agree-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 10px 22px;
+
+    border: 1px solid #003366;
+    border-radius: 22px;
+
+    background: #003366;
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+/* Enabled button */
+.privacy-agree-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 10px 22px;
+
+    border: 1px solid #003366;
+    border-radius: 22px;
+
+    background: #003366;
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+/* Hover only when enabled */
+.privacy-agree-btn:hover:not(:disabled) {
+    background: #00264d;
+    border-color: #00264d;
+    transform: translateY(-1px);
+}
+
+
+/* DISABLED — user has not reached the bottom */
+.privacy-agree-btn:disabled {
+    background: #cbd5e1;
+    border-color: #cbd5e1;
+    color: #ffffff;
+
+    cursor: not-allowed;
+    opacity: 0.75;
+
+    transform: none;
+}
 
 /* ============================================================
    DECLINE BUTTON
@@ -695,63 +773,6 @@
     border-color: #003366;
 
     color: #003366;
-
-}
-
-
-/* ============================================================
-   AGREE BUTTON
-   ============================================================ */
-
-.privacy-agree-btn {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 8px;
-
-    padding: 10px 22px;
-
-    border: 1px solid #003366;
-
-    border-radius: 22px;
-
-    background: #003366;
-
-    color: #ffffff;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition: 0.2s ease;
-
-}
-
-
-.privacy-agree-btn:hover:not(:disabled) {
-
-    background: #003366;
-
-}
-
-
-.privacy-agree-btn:disabled {
-
-    background: #cbd5e1;
-
-    border-color: #cbd5e1;
-
-    color: #ffffff;
-
-    cursor: not-allowed;
-
-    opacity: 1;
 
 }
 
@@ -901,48 +922,44 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | CHECK IF USER REACHED THE BOTTOM
-    |--------------------------------------------------------------------------
-    */
-
-    function checkPrivacyScroll() {
-
-        const scrollTop =
-            scrollContent.scrollTop;
-
-        const scrollHeight =
-            scrollContent.scrollHeight;
-
-        const clientHeight =
-            scrollContent.clientHeight;
-
-        const reachedBottom =
-            scrollTop + clientHeight >=
-            scrollHeight - 10;
+    agreeButton.disabled = true;
+    agreeButton.setAttribute('disabled', 'disabled');
 
 
-        if (reachedBottom) {
+function checkPrivacyScroll() {
 
-            agreeButton.disabled = false;
+    const scrollTop = scrollContent.scrollTop;
+    const scrollHeight = scrollContent.scrollHeight;
+    const clientHeight = scrollContent.clientHeight;
 
-            if (scrollMessage) {
+    const reachedBottom =
+        Math.ceil(scrollTop + clientHeight) >= scrollHeight - 5;
 
-                scrollMessage.innerHTML =
-                    '<i class="fas fa-check"></i> ' +
-                    'You may now proceed.';
+    if (reachedBottom) {
 
-            }
+        /* ENABLE */
+        agreeButton.disabled = false;
+        agreeButton.removeAttribute('disabled');
 
-        } else {
-
-            agreeButton.disabled = true;
-
+        if (scrollMessage) {
+            scrollMessage.innerHTML =
+                '<i class="fas fa-check"></i> ' +
+                'You may now proceed.';
         }
 
+    } else {
+
+        /* DISABLE */
+        agreeButton.disabled = true;
+        agreeButton.setAttribute('disabled', 'disabled');
+
+        if (scrollMessage) {
+            scrollMessage.innerHTML =
+                '<i class="fas fa-arrow-down"></i> ' +
+                'Please scroll to the bottom to continue.';
+        }
     }
+}
 
 
     /*
@@ -968,31 +985,6 @@ document.addEventListener('DOMContentLoaded', function () {
         checkPrivacyScroll();
 
     }, 100);
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | I AGREE & PROCEED
-    |--------------------------------------------------------------------------
-    */
-
-    agreeButton.addEventListener(
-        'click',
-        function () {
-
-            if (agreeButton.disabled) {
-                return;
-            }
-
-            /*
-            | Redirect to Application Type
-            */
-
-            window.location.href =
-                "{{ url('/application-type') }}";
-
-        }
-    );
 
 
     /*
