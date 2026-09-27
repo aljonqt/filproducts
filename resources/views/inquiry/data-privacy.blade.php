@@ -937,7 +937,6 @@ function checkPrivacyScroll() {
 
     if (reachedBottom) {
 
-        /* ENABLE */
         agreeButton.disabled = false;
         agreeButton.removeAttribute('disabled');
 
@@ -949,7 +948,6 @@ function checkPrivacyScroll() {
 
     } else {
 
-        /* DISABLE */
         agreeButton.disabled = true;
         agreeButton.setAttribute('disabled', 'disabled');
 
