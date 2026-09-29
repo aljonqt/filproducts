@@ -23,15 +23,14 @@ import {
 } from '../components/form';
 
 
-/* =========================================================
-   INITIALIZATION
-========================================================= */
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
     console.log('Filbiz JS Loaded');
 
-    /* ================= COMPONENTS ================= */
+
+
 
     initUploads();
     initFormValidation();
@@ -40,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initModals();
 
 
-    /* ================= FORM ================= */
+
 
     const form =
         document.getElementById('filbizForm');
@@ -51,9 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =====================================================
-       FORM SETTINGS
-    ===================================================== */
+
 
     let currentStep = 1;
 
@@ -62,9 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isSubmitting = false;
 
 
-    /* =====================================================
-       ELEMENTS
-    ===================================================== */
+
 
     const nextBtn =
         document.getElementById('nextBtn');
@@ -79,18 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('currentStepText');
 
 
-    /* =====================================================
-       MAP
-    ===================================================== */
 
+        
     const map = initMap();
 
     let mapInstance = map;
 
 
-    /* =====================================================
-       GPS BUTTON
-    ===================================================== */
+
 
     document
         .querySelectorAll('[data-get-location]')
@@ -109,9 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
 
-    /* =====================================================
-       STEP NAVIGATION
-    ===================================================== */
+
 
     function showStep(step) {
 
@@ -129,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentStep = step;
 
 
-        /* ================= FORM STEPS ================= */
+
 
         document
             .querySelectorAll('.form-step')
@@ -153,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        /* ================= STEP INDICATORS ================= */
+
 
         document
             .querySelectorAll('.step-item')
@@ -186,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
 
-        /* ================= CURRENT STEP ================= */
+
 
         if (currentStepText) {
 
@@ -196,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        /* ================= PREVIOUS BUTTON ================= */
+
 
         if (prevBtn) {
 
@@ -208,8 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        /* ================= NEXT / SUBMIT ================= */
 
+        
         if (nextBtn) {
 
             nextBtn.style.display =
@@ -230,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        /* ================= REVIEW ================= */
+
 
         if (step === totalSteps) {
 
@@ -239,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        /* ================= MAP ================= */
+
 
         if (step === 6) {
 
@@ -249,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             mapInstance.invalidateSize(true);
 
-            // Force Leaflet to redraw after becoming visible
+
             mapInstance.eachLayer(layer => {
                 if (layer.redraw) {
                     layer.redraw();
@@ -263,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 
 
-        /* ================= SCROLL ================= */
+
 
         window.scrollTo({
 
@@ -276,10 +265,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =====================================================
-       NEXT STEP
-    ===================================================== */
 
+    
     function nextStep() {
 
         if (!validateCurrentStep()) {
@@ -298,9 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =====================================================
-       PREVIOUS STEP
-    ===================================================== */
+
 
     function previousStep() {
 
@@ -315,9 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =====================================================
-       DIRECT STEP
-    ===================================================== */
+
 
     function goToStep(step) {
 
@@ -332,10 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        /*
-         * Only allow going backward
-         * or returning to current step.
-         */
+
         if (step <= currentStep) {
 
             showStep(step);
@@ -345,9 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =====================================================
-       EXPOSE NAVIGATION FOR BLADE / HTML
-    ===================================================== */
+
 
     window.nextStep =
         nextStep;
@@ -362,9 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateReview;
 
 
-    /* =====================================================
-       VALIDATE CURRENT STEP
-    ===================================================== */
+
 
     function validateCurrentStep() {
 
@@ -410,7 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        /* ================= BUSINESS LOCATION ================= */
+
 
         if (currentStep === 6) {
 
@@ -442,9 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =====================================================
-       STEP CLICK NAVIGATION
-    ===================================================== */
+
 
     document
         .querySelectorAll('.step-item')
@@ -473,9 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
 
-    /* =====================================================
-       GET VALUE
-    ===================================================== */
+
 
     function getValue(name) {
 
@@ -507,9 +479,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =====================================================
-       SET REVIEW TEXT
-    ===================================================== */
+
 
     function setReviewText(id, value) {
 
@@ -527,9 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =====================================================
-       PLAN SELECTION
-    ===================================================== */
+
 
     const planInputs =
         document.querySelectorAll(
@@ -603,14 +571,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-
-    /* =====================================================
-       REVIEW
-    ===================================================== */
-
     function updateReview() {
 
-        /* ================= BRANCH ================= */
+
+
+
 
         const branch =
             getValue('branch');
@@ -638,7 +603,7 @@ document.addEventListener('DOMContentLoaded', () => {
         );
 
 
-        /* ================= PLAN ================= */
+
 
         const selectedPlan =
             document.querySelector(
@@ -700,7 +665,7 @@ document.addEventListener('DOMContentLoaded', () => {
         );
 
 
-        /* ================= BUSINESS ================= */
+
 
         setReviewText(
             'reviewCompany',
@@ -720,7 +685,7 @@ document.addEventListener('DOMContentLoaded', () => {
         );
 
 
-        /* ================= PERSONAL ================= */
+
 
         const fullName = [
 
@@ -771,7 +736,7 @@ document.addEventListener('DOMContentLoaded', () => {
         );
 
 
-        /* ================= LOCATION ================= */
+
 
         const latitude =
             getValue('latitude');
@@ -792,7 +757,7 @@ document.addEventListener('DOMContentLoaded', () => {
         );
 
 
-        /* ================= FILES ================= */
+
 
         updateReviewFile(
             'business_permit',
@@ -820,9 +785,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =====================================================
-       REVIEW FILE
-    ===================================================== */
+
 
     function updateReviewFile(
         inputName,
@@ -866,9 +829,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =====================================================
-       FILE UPLOAD DISPLAY
-    ===================================================== */
+
 
     document
         .querySelectorAll('.file-input')
@@ -930,9 +891,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
 
-    /* =====================================================
-       DRAG AND DROP
-    ===================================================== */
+
 
     document
         .querySelectorAll('.upload-box')
@@ -1006,9 +965,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
 
-    /* =====================================================
-       DECLARATION MODAL
-    ===================================================== */
+
 
     const declarationModal =
         document.getElementById(
@@ -1074,9 +1031,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
 
-    /* =====================================================
-       CONTRACT MODAL
-    ===================================================== */
+
 
     const contractModal =
         document.getElementById(
@@ -1145,9 +1100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
 
-    /* =====================================================
-       CONTRACT PREVIEW
-    ===================================================== */
+
 
     function updateContractPreview() {
 
@@ -1193,7 +1146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         );
 
 
-        /* ================= DATE ================= */
+
 
         const date =
             new Date();
@@ -1246,7 +1199,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        /* ================= SIGNATURE ================= */
+
 
         const signature =
             getValue(
@@ -1276,9 +1229,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =====================================================
-       AGREEMENT / SUBMIT VALIDATION
-    ===================================================== */
+
 
     form.addEventListener(
         'submit',
@@ -1297,7 +1248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
 
-            /* ================= FORM VALIDATION ================= */
+
 
             if (!form.checkValidity()) {
 
@@ -1310,7 +1261,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
 
-            /* ================= DECLARATION ================= */
+
 
             const declaration =
                 document.getElementById(
@@ -1334,7 +1285,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
 
-            /* ================= CONTRACT ================= */
+
 
             const contract =
                 document.getElementById(
@@ -1358,7 +1309,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
 
-            /* ================= SIGNATURE ================= */
+
 
             const signature =
                 getValue(
@@ -1379,7 +1330,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
 
-            /* ================= LOCATION ================= */
+
 
             const latitude =
                 getValue('latitude');
@@ -1406,7 +1357,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
 
-/* ================= CAPTURE MAP ================= */
+
 
 if (mapInstance) {
 
@@ -1414,25 +1365,19 @@ if (mapInstance) {
 
     try {
 
-        /* ---------------------------------------------
-           MAKE SURE LEAFLET HAS THE CORRECT SIZE
-        --------------------------------------------- */
+
 
         mapInstance.invalidateSize(true);
 
 
-        /* ---------------------------------------------
-           WAIT FOR MAP TO RENDER
-        --------------------------------------------- */
+
 
         await new Promise(resolve =>
             setTimeout(resolve, 500)
         );
 
 
-            /* ---------------------------------------------
-            CAPTURE MAP
-            --------------------------------------------- */
+
 
         const mapInput =
             document.getElementById(
@@ -1465,9 +1410,7 @@ if (mapInstance) {
     );
 
 
-    /* =====================================================
-       SUBMIT FORM
-    ===================================================== */
+
 
         function submitForm() {
 
@@ -1491,9 +1434,7 @@ if (mapInstance) {
         }
 
 
-    /* =====================================================
-       MAP RESIZE
-    ===================================================== */
+
 
     window.addEventListener(
         'resize',
@@ -1516,9 +1457,7 @@ if (mapInstance) {
     );
 
 
-    /* =====================================================
-       INITIALIZE
-    ===================================================== */
+
 
     showStep(1);
 

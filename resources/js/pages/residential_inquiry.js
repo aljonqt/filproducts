@@ -21,9 +21,7 @@ import {
 } from '../components/form';
 
 
-/* =========================================================
-   GLOBAL STATE
-========================================================= */
+
 
 let currentStep = 1;
 const totalSteps = 8;
@@ -31,18 +29,14 @@ const totalSteps = 8;
 let residentialMap = null;
 
 
-/* =========================================================
-   DOM READY
-========================================================= */
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
     console.log('Residential JS Loaded');
 
 
-    /* =====================================================
-       INITIALIZE COMPONENTS
-    ===================================================== */
+
 
     try {
         initUploads();
@@ -75,9 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =====================================================
-       FORM
-    ===================================================== */
+
 
     const form = document.getElementById('residentialForm');
 
@@ -92,9 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isSubmitting = false;
 
 
-    /* =====================================================
-       MAP
-    ===================================================== */
+
 
     try {
         residentialMap = initMap();
@@ -110,9 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =====================================================
-       GPS BUTTON
-    ===================================================== */
+
 
     document
         .querySelectorAll('[data-get-location]')
@@ -139,9 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
 
-    /* =====================================================
-       FORM SUBMIT
-    ===================================================== */
+
 
     form.addEventListener('submit', async (event) => {
 
@@ -160,9 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('digitalSignatureInput');
 
 
-        /* ---------------------------------------------
-           AGREEMENT VALIDATION
-        --------------------------------------------- */
+
 
         if (declaration && !declaration.checked) {
 
@@ -200,9 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        /* ---------------------------------------------
-        SUBMIT WITHOUT MAP SCREENSHOT
-        --------------------------------------------- */
+        
 
         event.preventDefault();
 
@@ -214,9 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        /* ---------------------------------------------
-        SUBMITTING STATE
-        --------------------------------------------- */
+
 
         isSubmitting = true;
 
@@ -231,18 +211,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        /* ---------------------------------------------
-        ACTUAL SUBMISSION
-        --------------------------------------------- */
+
 
         HTMLFormElement.prototype.submit.call(form);
 
     });
 
 
-    /* =====================================================
-       FILE INPUT DISPLAY
-    ===================================================== */
+
 
     try {
         initFileInputs();
@@ -251,9 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =====================================================
-       DRAG AND DROP
-    ===================================================== */
+
 
     try {
         initDragAndDrop();
@@ -262,9 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =====================================================
-       DECLARATION MODAL
-    ===================================================== */
+
 
     try {
         initDeclarationModal();
@@ -276,9 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =====================================================
-       CONTRACT MODAL
-    ===================================================== */
+
 
     try {
         initContractModal();
@@ -289,9 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 
-    /* =====================================================
-       STEP NAVIGATION
-    ===================================================== */
+
 
     try {
         initStepNavigation();
@@ -303,18 +271,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* =====================================================
-       INITIAL STEP
-    ===================================================== */
+
 
     showStep(1);
 
 });
 
 
-/* =========================================================
-   STEP NAVIGATION
-========================================================= */
+
+
 
 function showStep(step) {
 
@@ -326,9 +291,7 @@ function showStep(step) {
     currentStep = step;
 
 
-    /* =====================================================
-       FORM STEPS
-    ===================================================== */
+
 
     document
         .querySelectorAll('.form-step')
@@ -350,9 +313,7 @@ function showStep(step) {
     }
 
 
-    /* =====================================================
-       PROGRESS
-    ===================================================== */
+
 
     document
         .querySelectorAll('.step-item')
@@ -381,9 +342,7 @@ function showStep(step) {
         });
 
 
-    /* =====================================================
-       CURRENT STEP NUMBER
-    ===================================================== */
+
 
     const currentStepNumber =
         document.getElementById(
@@ -398,9 +357,7 @@ function showStep(step) {
     }
 
 
-    /* =====================================================
-       BACK BUTTON
-    ===================================================== */
+
 
     const backBtn =
         document.getElementById('backBtn');
@@ -416,9 +373,7 @@ function showStep(step) {
     }
 
 
-    /* =====================================================
-       NEXT / SUBMIT BUTTON
-    ===================================================== */
+
 
     const nextBtn =
         document.getElementById('nextBtn');
@@ -452,9 +407,7 @@ function showStep(step) {
     }
 
 
-    /* =====================================================
-       SCROLL
-    ===================================================== */
+
 
     window.scrollTo({
         top: 0,
@@ -462,16 +415,7 @@ function showStep(step) {
     });
 
 
-    /* =====================================================
-       REFRESH LEAFLET SIZE
-    ===================================================== */
 
-    /*
-     * The map is normally on step 7.
-     *
-     * Leaflet needs invalidateSize() when a map
-     * becomes visible after being hidden.
-     */
 
     if (
         step === 7 &&
@@ -496,9 +440,7 @@ function showStep(step) {
 }
 
 
-/* =========================================================
-   NEXT STEP
-========================================================= */
+
 
 function nextStep() {
 
@@ -523,9 +465,7 @@ function nextStep() {
 }
 
 
-/* =========================================================
-   PREVIOUS STEP
-========================================================= */
+
 
 function previousStep() {
 
@@ -540,9 +480,7 @@ function previousStep() {
 }
 
 
-/* =========================================================
-   GO TO STEP
-========================================================= */
+
 
 function goToStep(step) {
 
@@ -565,9 +503,7 @@ function goToStep(step) {
 }
 
 
-/* =========================================================
-   VALIDATE CURRENT STEP
-========================================================= */
+
 
 function validateCurrentStep() {
 
@@ -608,9 +544,7 @@ function validateCurrentStep() {
 }
 
 
-/* =========================================================
-   INDUSTRY - OTHER
-========================================================= */
+
 
 function toggleOtherIndustry(select) {
 
@@ -638,9 +572,7 @@ function toggleOtherIndustry(select) {
 }
 
 
-/* =========================================================
-   GET FORM VALUE
-========================================================= */
+
 
 function getValue(name) {
 
@@ -657,15 +589,11 @@ function getValue(name) {
 }
 
 
-/* =========================================================
-   REVIEW
-========================================================= */
+
 
 function updateReview() {
 
-    /* ---------------------------------------------
-       BRANCH
-    --------------------------------------------- */
+
 
     setReviewText(
         'reviewBranch',
@@ -673,9 +601,7 @@ function updateReview() {
     );
 
 
-    /* ---------------------------------------------
-       PLAN
-    --------------------------------------------- */
+
 
     const selectedPlan =
         document.querySelector(
@@ -691,9 +617,7 @@ function updateReview() {
     );
 
 
-    /* ---------------------------------------------
-       PERSONAL
-    --------------------------------------------- */
+
 
     const fullName = [
 
@@ -749,9 +673,7 @@ function updateReview() {
     );
 
 
-    /* ---------------------------------------------
-       ADDRESS
-    --------------------------------------------- */
+
 
     const address = [
 
@@ -783,9 +705,7 @@ function updateReview() {
     );
 
 
-    /* ---------------------------------------------
-       EMPLOYMENT
-    --------------------------------------------- */
+
 
     let industry =
         getValue('industry');
@@ -823,9 +743,7 @@ function updateReview() {
     );
 
 
-    /* ---------------------------------------------
-       AUTHORIZED CONTACT
-    --------------------------------------------- */
+
 
     const authName = [
 
@@ -856,9 +774,7 @@ function updateReview() {
     );
 
 
-    /* ---------------------------------------------
-       FILES
-    --------------------------------------------- */
+
 
     updateFileReview(
         'valid_id',
@@ -878,9 +794,7 @@ function updateReview() {
     );
 
 
-    /* ---------------------------------------------
-       LOCATION
-    --------------------------------------------- */
+
 
     const lat =
         getValue('latitude');
@@ -908,9 +822,7 @@ function updateReview() {
 }
 
 
-/* =========================================================
-   REVIEW HELPER
-========================================================= */
+
 
 function setReviewText(id, value) {
 
@@ -927,9 +839,7 @@ function setReviewText(id, value) {
 }
 
 
-/* =========================================================
-   FILE REVIEW
-========================================================= */
+
 
 function updateFileReview(
     inputName,
@@ -972,9 +882,7 @@ function updateFileReview(
 }
 
 
-/* =========================================================
-   FILE INPUTS
-========================================================= */
+
 
 function initFileInputs() {
 
@@ -1040,9 +948,7 @@ function initFileInputs() {
 }
 
 
-/* =========================================================
-   DRAG AND DROP
-========================================================= */
+
 
 function initDragAndDrop() {
 
@@ -1131,9 +1037,7 @@ function initDragAndDrop() {
 }
 
 
-/* =========================================================
-   DECLARATION MODAL
-========================================================= */
+
 
 function initDeclarationModal() {
 
@@ -1194,9 +1098,7 @@ function initDeclarationModal() {
 }
 
 
-/* =========================================================
-   CONTRACT MODAL
-========================================================= */
+
 
 function initContractModal() {
 
@@ -1260,9 +1162,7 @@ function initContractModal() {
 }
 
 
-/* =========================================================
-   CONTRACT PREVIEW
-========================================================= */
+
 
 function updateContractPreview() {
 
@@ -1293,9 +1193,7 @@ function updateContractPreview() {
     );
 
 
-    /* ---------------------------------------------
-       ADDRESS
-    --------------------------------------------- */
+
 
     const address = [
 
@@ -1315,9 +1213,7 @@ function updateContractPreview() {
     );
 
 
-    /* ---------------------------------------------
-       BRANCH
-    --------------------------------------------- */
+
 
     setReviewText(
         'contract_branch',
@@ -1325,9 +1221,7 @@ function updateContractPreview() {
     );
 
 
-    /* ---------------------------------------------
-       SIGNATURE NAME
-    --------------------------------------------- */
+
 
     setReviewText(
         'contract_signature_name',
@@ -1335,9 +1229,7 @@ function updateContractPreview() {
     );
 
 
-    /* ---------------------------------------------
-       CONTRACT DATE
-    --------------------------------------------- */
+
 
     const date =
         new Date();
@@ -1368,9 +1260,7 @@ function updateContractPreview() {
 }
 
 
-/* =========================================================
-   STEP NAVIGATION EVENTS
-========================================================= */
+
 
 function initStepNavigation() {
 
